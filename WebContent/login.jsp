@@ -9,8 +9,7 @@
             	<div class="col-lg-2"></div>
                 <div class="col-lg-6">
                     <div class="login-content">                      
-                        <div class="login-form">
-                            <h4>접속</h4>
+                        <div>                            
                             <form>
                                 <div class="form-group">
                                     <label>아이디</label>
@@ -29,14 +28,13 @@
 									</label>
 
                                 </div>
+                                <div align="right">
                                 <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">입장</button>
-                                <div class="social-login-content">
-                                    <div class="social-button">
-                                        <button type="button" class="btn btn-primary bg-facebook btn-flat btn-addon m-b-10"><i class="ti-facebook"></i>페이스북으로 로그인</button>
-                                        <button type="button" class="btn btn-primary bg-twitter btn-flat btn-addon m-t-10"><i class="ti-twitter"></i>카카오톡으로 로그인</button>
-                                    </div>
                                 </div>
-                                <div class="register-link m-t-15 text-center">
+                                    <div align="center">
+                                        <button type="button" class="btn btn-primary bg-facebook btn-flat btn-addon m-b-10"><i class="ti-facebook"></i>페이스북으로 로그인</button>
+                                    </div>
+                                <div align="center" style="padding-top:5px;">
                                     <p>계정이 없나요? <a href="<%= root %>/join.jsp"> 회원가입</a></p>
                                 </div>
                             </form>
