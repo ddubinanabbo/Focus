@@ -49,6 +49,18 @@
 				                <td><span class="badge badge-danger">Extended</span></td>
 				                <td>January 25</td>
 				      		</tr>
+				      		<tr>
+				                <th scope="row">4</th>
+				                <td>Blue Backpack For Baby</td>
+				                <td><span class="badge badge-danger">Extended</span></td>
+				                <td>January 25</td>
+				      		</tr>
+				      		<tr>
+				                <th scope="row">5</th>
+				                <td>Blue Backpack For Baby</td>
+				                <td><span class="badge badge-danger">Extended</span></td>
+				                <td>January 25</td>
+				      		</tr>
 					      	</tbody>
 					      </table>
 					      </div>
@@ -92,11 +104,74 @@
 				                <td><span class="badge badge-danger">Extended</span></td>
 				                <td>January 25</td>
 				      		</tr>
+				      		<tr>
+				                <th scope="row">4</th>
+				                <td>Blue Backpack For Baby</td>
+				                <td><span class="badge badge-danger">Extended</span></td>
+				                <td>January 25</td>
+				      		</tr>
+				      		<tr>
+				                <th scope="row">5</th>
+				                <td>Blue Backpack For Baby</td>
+				                <td><span class="badge badge-danger">Extended</span></td>
+				                <td>January 25</td>
+				      		</tr>
 					      	</tbody>
 					      </table>
 					</div>
 				</div>
-			</div>
+			</div>		
+		</div>
+		<div class="col-sm-12">
+      <h4><i class="ti-book"></i>  최신 책추천</h4>
+      <div class="row">
+      		<div class="card">
+      			<div class="card-body">
+     				 <div class="row">
+    <div class="col-sm-3 ">
+      <div class="thumbnail">
+        <img src="#" alt="...">
+          <div class="caption">
+            <h3>제목과 </h3>
+            <p>내용도 넣을 수 있다.</p>
+            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        </div>
+      </div>
+    </div> 
+    <div class="col-sm-3">
+     <div class="thumbnail">
+       <img src="DSC_0374.jpg" alt="...">
+        <div class="caption">
+          <h3>제목과 </h3>
+          <p>내용도 넣을 수 있다.</p>
+          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="thumbnail">
+       <img src="#" alt="...">
+        <div class="caption">
+          <h3>제목과 </h3>
+          <p>내용도 넣을 수 있다.</p>
+          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="thumbnail">
+       <img src="#" alt="...">
+        <div class="caption">
+          <h3>제목과 </h3>
+          <p>내용도 넣을 수 있다.</p>
+          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        </div>
+      </div>
+    </div> 
+ </div>
+					</div>
+				</div>
+			</div>		
 		</div>
 		<br><br>
 		
