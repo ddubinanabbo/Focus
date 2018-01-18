@@ -28,19 +28,29 @@
       </div>
       <div class="panel-heading" style="background-color:#343957; color : #868e96;">
         <div class="panel-title">
-          <a data-toggle="collapse" href="#collapse2"><i class="ti-pencil-alt"> 씨 &amp; 씨++</i></a>
+          <a data-toggle="collapse" href="#collapse2"><i class="ti-pencil-alt"> 씨</i></a>
         </div>
          <div id="collapse2" class="panel-collapse collapse">
         <div class="panel-body"><i class="ti-clipboard"> 지식 게시판</i></div>
-        <div class="panel-body"><i class="ti-files"> 씨 &amp; 씨++ 자료실</i></div>
+        <div class="panel-body"><i class="ti-files"> 씨 자료실</font></i></div>
         <div class="panel-body"><i class="ti-book"> 책 추천하기</i></div>
       </div>
       </div>
       <div class="panel-heading" style="background-color:#343957; color : #868e96;">
         <div class="panel-title">
-          <a data-toggle="collapse" href="#collapse3"><i class="ti-pencil-alt"> 파이썬</i></a>
+          <a data-toggle="collapse" href="#collapse3"><i class="ti-pencil-alt"> 씨++</i></a>
         </div>
-        <div id="collapse3" class="panel-collapse collapse">
+         <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body"><i class="ti-clipboard"> 지식 게시판</i></div>
+        <div class="panel-body"><i class="ti-files"> 씨++ 자료실</font></i></div>
+        <div class="panel-body"><i class="ti-book"> 책 추천하기</i></div>
+      </div>
+      </div>
+      <div class="panel-heading" style="background-color:#343957; color : #868e96;">
+        <div class="panel-title">
+          <a data-toggle="collapse" href="#collapse4"><i class="ti-pencil-alt"> 파이썬</i></a>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse">
         <div class="panel-body"><i class="ti-clipboard"> 지식 게시판</i></div>
         <div class="panel-body"><i class="ti-files"> 파이썬 자료실</i></div>
         <div class="panel-body"><i class="ti-book"> 책 추천하기</i></div>
@@ -48,9 +58,9 @@
       </div>
       <div class="panel-heading" style="background-color:#343957; color : #868e96;">
         <div class="panel-title">
-          <a data-toggle="collapse" href="#collapse4"><i class="ti-pencil-alt"> 씨#</i></a>
+          <a data-toggle="collapse" href="#collapse5"><i class="ti-pencil-alt"> 씨#</i></a>
         </div>
-        <div id="collapse4" class="panel-collapse collapse">
+        <div id="collapse5" class="panel-collapse collapse">
         <div class="panel-body"><i class="ti-clipboard"> 지식 게시판</i></div>
         <div class="panel-body"><i class="ti-files"> 씨# 자료실</i></div>
         <div class="panel-body"><i class="ti-book"> 책 추천하기</i></div>
@@ -58,9 +68,9 @@
       </div>
       <div class="panel-heading" style="background-color:#343957; color : #868e96;">
         <div class="panel-title">
-          <a data-toggle="collapse" href="#collapse5"><i class="ti-pencil-alt"> 알</i></a>
+          <a data-toggle="collapse" href="#collapse6"><i class="ti-pencil-alt"> 알</i></a>
         </div>
-        <div id="collapse5" class="panel-collapse collapse">
+        <div id="collapse6" class="panel-collapse collapse">
         <div class="panel-body"><i class="ti-clipboard"> 지식 게시판</i></div>
         <div class="panel-body"><i class="ti-files"> 알 자료실</i></div>
         <div class="panel-body"><i class="ti-book"> 책 추천하기</i></div>
@@ -68,9 +78,9 @@
       </div>
       <div class="panel-heading" style="background-color:#343957; color : #868e96;">
         <div class="panel-title">
-          <a data-toggle="collapse" href="#collapse6"><i class="ti-pencil-alt"> 루비</i></a>
+          <a data-toggle="collapse" href="#collapse7"><i class="ti-pencil-alt"> 루비</i></a>
         </div>
-        <div id="collapse6" class="panel-collapse collapse">
+        <div id="collapse7" class="panel-collapse collapse">
         <div class="panel-body"><i class="ti-clipboard"> 지식 게시판</i></div>
         <div class="panel-body"><i class="ti-files"> 루비 자료실</i></div>
         <div class="panel-body"><i class="ti-book"> 책 추천하기</i></div>

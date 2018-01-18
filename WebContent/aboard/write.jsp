@@ -8,8 +8,9 @@
           <table class="table">
             <tr>
                <td >제목</td>
-               <td colspan="5"><input type="text" placeholder="제목을 입력하세요!"></td>               
+               <td colspan="5"><input size="50" type="text" placeholder="제목을 입력하세요!"></td>               
                <td></td>
+               
             </tr>
             <tr>
             	<td>
@@ -24,12 +25,12 @@
             	<td></td>
             	<td></td>
             	<td>
-				조회수 <font class="text_commentnum"> 123</font>
+				조회수 <font class="text_commentnum"> 0</font>
             	</td>
             </tr>                   
            <tr>
                 <td colspan="7">
-                <p>글 내용</p>                             
+                <textarea rows="28" cols="135" placeholder="글 내용을 입력하세요!"></textarea>                             
                 </td>                
           
            </tr>     

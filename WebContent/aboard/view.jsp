@@ -6,6 +6,9 @@
       
       <div class="container-fluid">
           <table class="table">
+          	<tr>
+                <td colspan="7" align="right"><button> 글 목록</button> <button> 글 수정</button> <button> 글 쓰기</button> </td>
+            </tr>
             <tr>
                <td >제목</td>
                <td colspan="5">제목 넣을 곳</td>
