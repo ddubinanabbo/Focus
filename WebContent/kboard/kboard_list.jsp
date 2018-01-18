@@ -1,12 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+<%@ include file="/common/header.jsp" %>
+
+      <h3><i class="ti-announcement"></i>  전체 공지사항</h3>
+      
+      <hr>
+      <table class="table table-hover ">
+                <thead>
+                      <tr>
+                      <th>글번호</th>
+                      <th>글제목</th>
+                      <th>작성자</th>
+                      <th>작성날짜</th>
+                   </tr>
+                </thead>
+          <tbody>
+           <tr>
+                <th scope="row">1</th>
+                <td>Kolor Tea Shirt For Man</td>
+                <td><span class="badge badge-primary">Sale</span></td>
+                <td>January 22</td>
+           </tr>
+           <tr>
+                <th scope="row">2</th>
+                <td>Kolor Tea Shirt For Women</td>
+                <td><span class="badge badge-success">Tax</span></td>
+                <td>January 30</td>
+           </tr>
+                <tr>
+                <th scope="row">3</th>
+                <td>Blue Backpack For Baby</td>
+                <td><span class="badge badge-danger">Extended</span></td>
+                <td>January 25</td>
+      		</tr>
+      	</tbody>
+      </table>
+      <hr>
 
 </body>
 </html>
