@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/common/header.jsp" %>
-	
+	<h3><i class="ti-book"></i>  책 추천하기</h3>
 <div class="row">
     <div class="col-sm-3 ">
       <div class="thumbnail">
