@@ -5,6 +5,13 @@
       
       <div class="container-fluid">
           <table class="table">
+          	<tr>
+                <td colspan="7" align="right">
+               		<a href="#" class="btn btn-success" role="button">글 목록</a>
+                	<a href="#" class="btn btn-danger" role="button">삭제</a>
+      				<a href="#" class="btn btn-primary" role="button">수정</a>
+                </td>
+            </tr>
             <tr>
                <td >제목</td>
                <td colspan="5">제목 넣을 곳</td>
@@ -39,13 +46,7 @@
           
            </tr>     
       </table>
-      <hr>
-      <div class="row">
-      	<div class="col-sm-12" align="right">
-      		<a href="#" class="btn btn-danger" role="button">삭제</a>
-      		<a href="#" class="btn btn-primary" role="button">수정</a>
-      	</div>
-      </div> 
+      
       <hr>
       <h4>Leave a Comment:</h4>
       <form role="form">
