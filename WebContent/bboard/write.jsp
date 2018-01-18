@@ -34,7 +34,7 @@
            <tr>
                 <td colspan="7">
                 <p>글 내용</p>
-                <textarea rows="6" cols="160" placeholder="내용을 입력하세요"></textarea>                             
+                <textarea rows="6" cols="140" placeholder="내용을 입력하세요"></textarea>                             
                 </td>                
           
            </tr>     
