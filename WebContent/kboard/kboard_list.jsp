@@ -7,7 +7,9 @@
       <hr>
       <table class="table table-hover ">
                   <tr>
-                      <td colspan="7" align="right"><button>글쓰기</button></td>
+                      <td colspan="7" align="right">
+                      <a href="#" class="btn btn-info" role="button">글쓰기</a>
+                      </td>
                    </tr>
                    <tr>
                       <th>글번호</th>

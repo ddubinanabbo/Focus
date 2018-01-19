@@ -10,13 +10,10 @@ function movView()	{
 
 </script>
 
-      <h3><i class="ti-announcement"></i>  전체 공지사항</h3>
+      <h3><i class="ti-search"></i>  전체 게시글 검색결과</h3>
       
       <hr>
       <table class="table table-hover ">
-                  <tr>
-                      <td colspan="7" align="right"><a href="${root }/aboard/write.jsp" class="btn btn-info" role="button">글쓰기</a></td>
-                   </tr>
                    <tr>
                       <th>글번호</th>
                       <th>글제목</th>

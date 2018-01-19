@@ -3,13 +3,14 @@
 <%@ include file="/common/header.jsp" %>
 
 <style>
-div {
+#profile div {
 	padding:5px;
 }
+
 </style>
-      <h3><i class="ti-pencil-alt2"></i>  프로필</h3>      
+      <h3><i class="ti-info-alt"></i>  프로필</h3>      
       
-      <div class="container-fluid">         
+      <div id="profile" class="container-fluid">         
           <!-- /# row -->
               <div class="col-lg-12">
                 <div class="card">
@@ -18,7 +19,7 @@ div {
                       <div class="row">
                         <div class="col-lg-4">
                           <div class="user-photo m-b-30">
-                            <img class="img-fluid" src="<%= root %>/images/user-profile.jpg" alt="" height="300" width="300">
+                            <img class="img-fluid" src="${root }/images/user-profile.jpg" alt="" height="300" width="300">
                           </div>
                         </div>
                         <div class="col-lg-8">                          
@@ -50,11 +51,8 @@ div {
                             <h4>스킬</h4>
                            <div>
                             <ul>
-                              <li><a href="#">Branding</a></li>
                               <li><a href="#">UI/UX</a></li>
                               <li><a href="#">Web Design</a></li>
-                              <li><a href="#">Wordpress</a></li>
-                              <li><a href="#">Magento</a></li>
                             </ul>
                           </div>                         
                           </div>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/common/header.jsp" %>
 
-      <h3><i class="ti-pencil-alt2"></i>  글쓰기</h3>      
+      <h3><i class="ti-pencil-alt2"></i>  회원가입</h3>      
       
           <div class="container-fluid">
             <div class="row justify-content-center">            	
@@ -10,7 +10,6 @@
                 <div class="col-lg-6">
                     <div class="login-content">
                         <div class="login-form">
-                            <h4>회원가입</h4>
                             <form>
                             	<div class="row">
                             	<div class="form-group">
@@ -46,16 +45,17 @@
                                     <label>전화번호</label>
                                     <input type="text" class="form-control" placeholder="전화번호">
                                 </div>
-                                </div>                                
-                                <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Register</button>
-                                <div class="social-login-content">
-                                    <div class="social-button">
-                                        <button type="button" class="btn btn-primary bg-facebook btn-flat btn-addon m-b-10"><i class="ti-facebook"></i>Register with facebook</button>
-                                        <button type="button" class="btn btn-primary bg-twitter btn-flat btn-addon m-t-10"><i class="ti-twitter"></i>Register with twitter</button>
-                                    </div>
+                                </div> 
+                                <div align="right" style="padding-bottom:5px;">                               
+                                <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">등록</button>
                                 </div>
+                                <div align="center" style="padding:5px;">                               
+                                <button type="button" class="btn btn-primary"><i class="ti-facebook"></i>페이스북으로 등록하기</button>
+                                </div>
+                                
                             </form>
                         </div>
+                        
                     </div>
                 </div>
             </div>

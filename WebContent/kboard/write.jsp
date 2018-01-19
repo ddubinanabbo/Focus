@@ -31,11 +31,18 @@
             </tr>                   
            <tr>
                 <td colspan="7">
-                <textarea rows="28" cols="135" placeholder="글 내용을 입력하세요!"></textarea>                             
+                <p>글 내용</p>
+                <textarea rows="28" cols="137" placeholder="글 내용을 입력하세요!"></textarea>                             
                 </td>                
           
-           </tr>     
-      </table>          
+           </tr>             
+      </table>
+      <div class="row">
+      	<div class="col-sm-12" align="right">
+      		<a href="#" class="btn btn-danger" role="button">취소</a>
+      		<a href="#" class="btn btn-primary" role="button">완료</a>
+      	</div>
+      </div>
 	  </div>
 
 </body>

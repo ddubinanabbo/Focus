@@ -7,7 +7,11 @@
       <div class="container-fluid">
           <table class="table">
           	<tr>
-                <td colspan="7" align="right"><button> 글 목록</button> <button> 글 수정</button> <button> 글 쓰기</button> </td>
+                <td colspan="7" align="right">
+				<a href="${root }/aboard/aboard_list.jsp" class="btn btn-success" role="button">글 목록</a>
+                	<a href="${root }/aboard/aboard_list.jsp" class="btn btn-danger" role="button">삭제</a>
+      				<a href="${root }/aboard/view.jsp" class="btn btn-primary" role="button">수정</a>				
+				</td>
             </tr>
             <tr>
                <td >제목</td>
