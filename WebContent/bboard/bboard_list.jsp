@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/common/header.jsp" %>
 	<h3><i class="ti-book"></i>  책 추천하기</h3>
+<div align="right" style="padding:5px;"><a href="#" class="btn btn-info" role="button">글쓰기</a></div>
 <div class="row">
     <div class="col-sm-3 ">
       <div class="thumbnail">
@@ -43,12 +44,6 @@
         </div>
       </div>
     </div> 
- </div>
- 
- <div class="row">
- 	<div class="col-sm-12" align="right">
- 		<a href="#" class="btn btn-primary" role="button">글쓰기</a>
- 	</div>
  </div>
  
  

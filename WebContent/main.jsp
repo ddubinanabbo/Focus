@@ -128,46 +128,54 @@
       		<div class="card">
       			<div class="card-body">
      				 <div class="row">
-    <div class="col-sm-3 ">
+     <div class="col-sm-3">
       <div class="thumbnail">
-        <img src="#" alt="...">
-          <div class="caption">
-            <h3>제목과 </h3>
-            <p>내용도 넣을 수 있다.</p>
-            <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+       <img src="${root }/images/user-profile.jpg" alt="...">
+        <div class="caption">
+          <h4>제목과 </h4>
+          <p>내용도 넣을 수 있다.</p>          
+        </div>
+        <div align="center">
+        <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
         </div>
       </div>
     </div> 
     <div class="col-sm-3">
-     <div class="thumbnail">
-       <img src="DSC_0374.jpg" alt="...">
-        <div class="caption">
-          <h3>제목과 </h3>
-          <p>내용도 넣을 수 있다.</p>
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-3">
       <div class="thumbnail">
-       <img src="#" alt="...">
+       <img src="${root }/images/user-profile.jpg" alt="...">
         <div class="caption">
-          <h3>제목과 </h3>
-          <p>내용도 넣을 수 있다.</p>
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+          <h4>제목과 </h4>
+          <p>내용도 넣을 수 있다.</p>          
         </div>
-      </div>
-    </div>
-    <div class="col-sm-3">
-      <div class="thumbnail">
-       <img src="#" alt="...">
-        <div class="caption">
-          <h3>제목과 </h3>
-          <p>내용도 넣을 수 있다.</p>
-          <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+        <div align="center">
+        <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
         </div>
       </div>
     </div> 
+    <div class="col-sm-3">
+      <div class="thumbnail">
+       <img src="${root }/images/user-profile.jpg" alt="...">
+        <div class="caption">
+          <h4>제목과 </h4>
+          <p>내용도 넣을 수 있다.</p>          
+        </div>
+        <div align="center">
+        <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+        </div>
+      </div>
+    </div> 
+    <div class="col-sm-3">
+      <div class="thumbnail">
+       <img src="${root }/images/user-profile.jpg" alt="...">
+        <div class="caption">
+          <h4>제목과 </h4>
+          <p>내용도 넣을 수 있다.</p>          
+        </div>
+        <div align="center">
+        <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
+        </div>
+      </div>
+    </div>   
  </div>
 					</div>
 				</div>

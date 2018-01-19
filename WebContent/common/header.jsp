@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%
-    String root =  request.getContextPath();
-    %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath}"/>
     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,7 +13,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="<%=root %>/css/themify-icons.css">
+  <link rel="stylesheet" href="${root }/css/themify-icons.css">
   <style>
     /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
     .row.content {height: 1500px}
@@ -64,12 +63,14 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="navbar-brand" href="#">포커스</a>
+      <a class="navbar-brand" href="${root }/main.jsp">포커스</a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> 접속</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+        <li><a href="${root }/login.jsp"><span class="glyphicon glyphicon-log-in"></span>  접속</a></li>
+        <li><a href="${root }/join.jsp"><span class="glyphicon glyphicon-pencil"></span> 회원가입</a></li>
+      	<li><a href="${root }/profile.jsp"><span class="glyphicon glyphicon-user"></span> 프로필</a></li>
+        <li><a href="${root }/main.jsp"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
       </ul>
     </div>
   </div>

@@ -24,7 +24,7 @@
 										<input type="checkbox"> 기억
 									</label>
                                     <label class="pull-right">
-										<a href="<%= root %>/resetpwd.jsp">비밀번호를 잃어버렸나요?</a>
+										<a href="${root }/resetpwd.jsp">비밀번호를 잃어버렸나요?</a>
 									</label>
 
                                 </div>
@@ -35,7 +35,7 @@
                                         <button type="button" class="btn btn-primary bg-facebook btn-flat btn-addon m-b-10"><i class="ti-facebook"></i>페이스북으로 로그인</button>
                                     </div>
                                 <div align="center" style="padding-top:5px;">
-                                    <p>계정이 없나요? <a href="<%= root %>/join.jsp"> 회원가입</a></p>
+                                    <p>계정이 없나요? <a href="${root }/join.jsp"> 회원가입</a></p>
                                 </div>
                             </form>
                         </div>

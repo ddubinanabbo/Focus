@@ -7,7 +7,7 @@
           <table class="table">
             <tr>
                <td >제목</td>
-               <td colspan="5"><input type="text" placeholder="제목을 입력하세요!"></td>               
+               <td colspan="5"><input type="text" size="50" placeholder="제목을 입력하세요!"></td>               
                <td></td>
             </tr>
             <tr>
@@ -27,7 +27,7 @@
             	</td>
             </tr>
             <tr>
-               <td >파일업로드</td>
+               <td >사진업로드</td>
                <td colspan="5"><input type="file" id="upfile" name="upfile"></td>               
                <td></td>
             </tr>                   

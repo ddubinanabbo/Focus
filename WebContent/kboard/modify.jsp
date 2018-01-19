@@ -30,13 +30,19 @@
             </tr>                   
            <tr>
                 <td colspan="7">
-                <textarea rows="28" cols="135">
+                <textarea rows="28" cols="137">
 원래글          
                 </textarea>                             
                 </td>                
           
            </tr>     
-      </table>          
+      </table>
+      <div class="row">
+      	<div class="col-sm-12" align="right">
+      		<a href="#" class="btn btn-danger" role="button">취소</a>
+      		<a href="#" class="btn btn-primary" role="button">완료</a>
+      	</div>
+      </div>         
 	  </div>
 
 </body>
