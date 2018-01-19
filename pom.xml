@@ -80,6 +80,12 @@
 	    <groupId>com.googlecode.json-simple</groupId>
 	    <artifactId>json-simple</artifactId>
 	    <version>${json.version}</version>
-	</dependency>		
+	</dependency>
+	<!--  maria DB -->
+		<dependency>
+		    <groupId>org.mariadb.jdbc</groupId>
+		    <artifactId>mariadb-java-client</artifactId>
+		    <version>1.5.7</version>
+		</dependency>		
   </dependencies>
 </project>
