@@ -1,6 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/common/header.jsp" %>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#sendmailbtn").click(function(){
+		if($("#M_MAIL").val() == "") {
+			alert("메일을 입력하세요!!!!");
+			return;
+		}else {
+			document.mailform.action = "${root}/mail/mail.focus";
+			document.mailform.submit();
+		}
+	})
+})
+</script>
 
       <h3><i class="ti-pencil-alt2"></i>  비밀번호 재설정</h3>      
       
@@ -10,13 +23,13 @@
                 <div class="col-lg-6">
                     <div class="login-content">
                         <div class="login-form">
-                            <form>
+                            <form name="mailform" method="post" action="">
                                 <div class="form-group">
                                     <label>등록한 이메일을 적으세요</label>
-                                    <input type="email" class="form-control" placeholder="이메일">
+                                    <input type="email" id="M_MAIL" name="M_MAIL" class="form-control" placeholder="이메일">
                                 </div>
                                 <div align="right">
-                                 <button type="submit" class="btn btn-primary btn-flat m-b-15">메일전송</button>
+                                 <button type="submit" id="sendmailbtn" class="btn btn-primary btn-flat m-b-15">메일전송</button>
                                  </div>
                                  
                             </form>
