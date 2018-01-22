@@ -8,7 +8,6 @@ $(document).ready(function(){
 			alert("메일을 입력하세요!!!!");
 			return;
 		}else {
-			document.mailform.action = "${root}/mail/mail.focus";
 			document.mailform.submit();
 		}
 	})
@@ -22,8 +21,9 @@ $(document).ready(function(){
             	<div class="col-lg-2"></div>
                 <div class="col-lg-6">
                     <div class="login-content">
+                    
                         <div class="login-form">
-                            <form name="mailform" method="post" action="">
+                            <form name="mailform" method="post" action="${root}/mail/mail.focus">
                                 <div class="form-group">
                                     <label>등록한 이메일을 적으세요</label>
                                     <input type="email" id="M_MAIL" name="M_MAIL" class="form-control" placeholder="이메일">
