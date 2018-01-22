@@ -67,10 +67,18 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="${root }/login.jsp"><span class="glyphicon glyphicon-log-in"></span>  접속</a></li>
-        <li><a href="${root }/join.jsp"><span class="glyphicon glyphicon-pencil"></span> 회원가입</a></li>
-      	<li><a href="${root }/profile.jsp"><span class="glyphicon glyphicon-user"></span> 프로필</a></li>
-        <li><a href="${root }/main.jsp"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+     
+<c:if test="${userInfo == null}">
+		<li><a href="${root }/user/login.focus"><span class="glyphicon glyphicon-log-in"></span>  접속</a></li>
+        <li><a href="${root}/user/join.focus"><span class="glyphicon glyphicon-pencil"></span> 회원가입</a></li>
+</c:if>
+<c:if test="${userInfo != null}">
+		<li><a href="${root }/profile.jsp"><span class="glyphicon ti-user"></span> ${userInfo.m_NAME}님</a></li>
+		<li><a href="${root }/profile.jsp"><span class="glyphicon glyphicon-user"></span> 프로필</a></li>
+        <li><a href="${root}/user/logout.focus"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+</c:if>
+        
+      	
       </ul>
     </div>
   </div>
