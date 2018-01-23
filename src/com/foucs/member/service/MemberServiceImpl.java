@@ -10,7 +10,7 @@ import com.focus.member.model.MemberDto;
 
 public class MemberServiceImpl implements MemberService {
 	
-private SqlSession sqlSession;
+	private SqlSession sqlSession;
 	
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
@@ -37,6 +37,27 @@ private SqlSession sqlSession;
 		map.put("userid", M_ID);
 		map.put("userpwd", M_PASS);
 		return memberDao.login(map);
+	}
+
+	@Override
+	public MemberDto findAccount(String M_ID, String M_EMAIL) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userid", M_ID);
+		map.put("usermail", M_EMAIL);
+		
+		return memberDao.findAccount(map);
+	}
+
+	@Override
+	public void updatepwd(String M_ID, String M_PASS) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("userid", M_ID);
+		map.put("userpwd", M_PASS);
+		memberDao.updatepwd(map);
+		
 	}
 
 }

@@ -25,8 +25,11 @@ $(document).ready(function(){
                         <div class="login-form">
                             <form name="mailform" method="post" action="${root}/mail/mail.focus">
                                 <div class="form-group">
+                                	<label>등록한 아이디를 적으세요</label>
+                                    <input type="text" id="M_ID" name="M_ID" class="form-control" placeholder="아이디">
+                                    <br>
                                     <label>등록한 이메일을 적으세요</label>
-                                    <input type="email" id="M_MAIL" name="M_MAIL" class="form-control" placeholder="이메일">
+                                    <input type="email" id="M_EMAIL" name="M_EMAIL" class="form-control" placeholder="이메일">
                                 </div>
                                 <div align="right">
                                  <button type="submit" id="sendmailbtn" class="btn btn-primary btn-flat m-b-15">메일전송</button>

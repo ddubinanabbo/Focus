@@ -8,8 +8,15 @@
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
 		<config>src/com/focus/config/spring/mailSender-servlet.xml</config>
+		<config>src/com/focus/config/spring/mailSender-application.xml</config>
 	</configs>
 	<autoconfigs>
+		<config>src/com/focus/config/spring/admin-application.xml</config>
+		<config>src/com/focus/config/spring/common-servlet.xml</config>
+		<config>src/com/focus/config/spring/member-application.xml</config>
+		<config>src/com/focus/config/spring/member-servlet.xml</config>
+		<config>src/com/focus/config/spring/common-application.xml</config>
+		<config>src/com/focus/config/spring/admin-servlet.xml</config>
 	</autoconfigs>
 	<configSets>
 	</configSets>

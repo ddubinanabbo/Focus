@@ -1,5 +1,14 @@
 package com.focus.member.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -9,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.focus.member.model.MemberDto;
@@ -76,5 +86,46 @@ public class MemberController {
 		return "redirect:/login.jsp";
 	}
 	
+	
+	@RequestMapping(value = "/upprofile.focus", method = RequestMethod.POST)
+	public ModelAndView write(AlbumDto albumDto, @RequestParam Map<String, String> map, HttpSession session) throws IllegalStateException, IOException {
+		ModelAndView mav = new ModelAndView();
+		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
+		if (memberDto != null) {
+			int seq = commonService.getNextSeq();
+			albumDto.setSeq(seq);
+			albumDto.setId(memberDto.getId());
+			albumDto.setName(memberDto.getName());
+			albumDto.setEmail(memberDto.getEmail1() + "@" + memberDto.getEmail2());
+			
+			DateFormat df = new SimpleDateFormat("yyMMdd");
+			String saveFolder = df.format(new Date());
+			String uploadPath = upFolder + File.separator + saveFolder;
+			File folder = new File(uploadPath);
+			if(!folder.exists()){
+				folder.mkdirs();
+			}
+			albumDto.setSaveFolder(saveFolder);
+			List<MultipartFile> list = albumDto.getUpfile();
+			
+			for (MultipartFile multipartFile : list) {
+				if(!multipartFile.isEmpty()){
+					String ofile = multipartFile.getOriginalFilename();
+					albumDto.setOrignPicture(ofile);
+					String savePicture = UUID.randomUUID().toString() + ofile.substring(ofile.lastIndexOf("."));
+					albumDto.setSavePicture(savePicture);
+					multipartFile.transferTo(new File(uploadPath, savePicture));
+				}
+			}
+						
+			int cnt = albumService.writeArticle(albumDto);
+			mav.addObject("querystring", map);
+			mav.addObject("seq", seq);
+			mav.setViewName("/WEB-INF/album/writeOk");
+		} else {
+			mav.setViewName("/login/login");
+		}
+		return mav;
+	}
 	
 }

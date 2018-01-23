@@ -12,16 +12,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
       <insert id="registerMember" parameterType="com.focus.member.model.MemberDto">
-        insert into member (M_ID, M_PASS, M_NAME, M_JOB, M_AGE, M_EMAIL, M_TEL, M_JOINDATE)
-        values(#{M_ID}, #{M_PASS}, #{M_NAME}, #{M_JOB}, #{M_AGE},#{M_EMAIL}, #{M_TEL}, now()) 
+        insert into member (M_ID, M_PASS, M_NAME, M_JOB, M_AGE, M_EMAIL, M_TEL, M_INTRODUCE, M_CAREER, M_SKILL M_JOINDATE)
+        values(#{M_ID}, #{M_PASS}, #{M_NAME}, #{M_JOB}, #{M_AGE},#{M_EMAIL}, #{M_TEL}, ' ', ' ', ' ',  now()) 
         
     </insert>
     
     <select id="login" parameterType="java.util.Map" resultType="com.focus.member.model.MemberDto">
-        select M_ID, M_NAME
+        select MSEQ, M_ID, M_NAME, M_PASS, M_JOB, M_AGE, M_TEL, M_EMAIL, M_JOINDATE
         from member
         where M_ID = #{userid} and M_PASS = #{userpwd}
     </select>
+    
+    <select id="findAccount" parameterType="java.util.Map" resultType="com.focus.member.model.MemberDto">
+    	select MSEQ, M_ID, M_EMAIL
+    	from member
+    	where M_EMAIL = #{usermail}
+    	  and M_ID = #{userid}
+    </select>
+    
+    <update id="updatepwd" parameterType="java.util.Map">
+    	update member
+    	  set M_PASS = #{userpwd}
+    	where M_ID = #{userid}
+    </update>
     
     
     

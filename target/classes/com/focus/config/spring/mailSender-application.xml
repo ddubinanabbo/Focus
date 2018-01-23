@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+							http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+	
+	<bean id="javaMailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
+		 <property name="host" value="smtp.gmail.com" /> 
+		 <property name="port" value="587" />
+		 <property name="username" value="ddubinanabo@gmail.com" />
+		 <property name="password" value="wjdtmdgh1!" />
+		 <property name="javaMailProperties">
+		     <props> 
+			     <prop key="mail.smtp.auth">true</prop>
+	    		 <prop key="mail.smtp.starttls.enable">true</prop>
+		     </props> 
+		 </property> 
+	</bean>
+	
+	<bean id="mailService" class="com.foucs.member.service.MailServiceImpl">
+    	<property name="javaMailSender" ref="javaMailSender" />
+	</bean>
+	
+	<bean id="memberService" class="com.foucs.member.service.MemberServiceImpl">
+		<property name="sqlSession" ref="ss"/>
+	</bean>
+	
+	<bean id="ds" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+		<property name="driverClass" value="org.mariadb.jdbc.Driver" />
+		<property name="url" value="jdbc:mariadb://192.168.12.12/focussh" />
+		<property name="username" value="root" />
+		<property name="password" value="root" />
+	</bean>
+
+	<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="mapperLocations" value="classpath:com/focus/config/mybatis/member.xml"/>
+		<property name="dataSource" ref="ds"></property>
+	</bean>
+	
+	<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="ssfb"/>
+	</bean>
+	
+	
+
+
+	
+	
+</beans>

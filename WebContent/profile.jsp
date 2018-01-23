@@ -1,7 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/common/header.jsp" %>
-
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#upfile").click(function(){
+		document.profileForm.action = "${root}/user/upprofile.focus";
+		document.profileForm.submit();
+	});
+});
+</script>
 <style>
 #profile div {
 	padding:5px;
@@ -18,43 +25,60 @@
                     <div class="user-profile">
                       <div class="row">
                         <div class="col-lg-4">
+                        <form id="profileForm" name="profileForm" method="post" action="" enctype="multipart/form-data" style="margin: 0px">
                           <div class="user-photo m-b-30">
-                            <img class="img-fluid" src="${root }/images/user-profile.jpg" alt="" height="300" width="300">
+                          	<div class="thumbnail">
+						        <img class="img-fluid"  src="${root }/images/user-profile.jpg" alt="" height="500" width="500">
+						        <br>
+						        <input type="file" id="upfile" name="upfile">
+						          <div class="caption">
+						        </div>
+						      </div>
                           </div>
+                          </form>
+                          <h4>기본 정보</h4>
+                          <div>이름</div>
+                          <div>${userInfo.m_NAME}</div>
+                          <ul class="nav nav-tabs" role="tablist"></ul>
+                          <div>직업</div>
+                          <div>${userInfo.m_JOB}</div>
+                                  <ul>
+                                  	<li>나이  ${userInfo.m_AGE }</li>
+                                  	<li>전화번호  ${userInfo.m_TEL}</li>
+                                  	<li>이메일  ${userInfo.m_EMAIL}</li>
+                                  </ul> 
                         </div>
                         <div class="col-lg-8">                          
                           <div class="custom-tab user-profile-tab">
-                          <div>이름</div>
-                          <div>정승호</div>
-                          <ul class="nav nav-tabs" role="tablist"></ul>                          
-                          <div>직업</div>
-                          <div>컴퓨터</div>                      
-                          <ul class="nav nav-tabs" role="tablist"></ul>
-                                  <h4>기본 정보</h4>
-                                  <div>나이 27</div>
-                                  <div>전화번호 +8801629599859</div>
-                                  <div>이메일 hello@Admin Board.com</div>
+                          <div>비밀번호</div> 
+                          <div><input type="password" id="M_PASS" name="M_PASS" class="form-control" value="${userInfo.m_PASS}"></div>  
+                          <div>비밀번호 확인</div> 
+                          <div><input type="password" id="passok" name="passok" class="form-control" value="${userInfo.m_PASS}"></div>                     
+                                               
+                          
                           <ul class="nav nav-tabs" role="tablist"></ul>
                                   <h4>자기 소개</h4>
                                   <div>
-                                    <p>안녕하세요 잘 부탁드립니다.</p>                                    
+                                    <input type="text" id="M_INTRODUCE" name="M_INTRODUCE" class="form-control" value="">                                    
                                   </div>
                                  </div>
                             <ul class="nav nav-tabs" role="tablist"></ul>
                             <h4>직장 이력</h4>
                             <div>
-                              <p><b>It Solution </b></p>
-                              <p>123, South Mugda</p>
-                              <p>New York, 1214</p>
+                              <input type="text" id="M_CAREER" name="M_CAREER" class="form-control" value=""> 
                             </div>
                             <ul class="nav nav-tabs" role="tablist"></ul>
                             <h4>스킬</h4>
                            <div>
                             <ul>
-                              <li><a href="#">UI/UX</a></li>
+                              <li><input type="text" id="M_CAREER" name="M_CAREER" class="form-control" value="UI/UX"></li>
                               <li><a href="#">Web Design</a></li>
                             </ul>
-                          </div>                         
+                          </div>
+                          <div align="right" style="padding-bottom:5px;">                               
+                                <button type="submit" id="registerbtn" class="btn btn-primary btn-flat m-b-30 m-t-30">수정</button>
+                                <button type="submit" id="registerbtn" class="btn btn-danger">취소</button>
+                                </div>                         
                           </div>
                            
                               </div>
