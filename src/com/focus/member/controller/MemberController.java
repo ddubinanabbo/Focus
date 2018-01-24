@@ -13,6 +13,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,14 +30,13 @@ import com.foucs.member.service.MemberService;
 @RequestMapping("/user")
 public class MemberController {
 	
+	@Autowired
 	private MemberService memberService;
 
-	public void setMemberService(MemberService memberService) {
-		this.memberService = memberService;
-	}
 	
 	@RequestMapping("/idcheck.focus")
 	public @ResponseBody String idCheck(@RequestParam("sid") String sid){
+		System.out.println(memberService);
 		int cnt = memberService.idcheck(sid);
 		JSONObject json = new JSONObject();
 		json.put("idcount", cnt);
@@ -87,7 +88,7 @@ public class MemberController {
 	}
 	
 	
-	@RequestMapping(value = "/upprofile.focus", method = RequestMethod.POST)
+	/*@RequestMapping(value = "/upprofile.focus", method = RequestMethod.POST)
 	public ModelAndView write(AlbumDto albumDto, @RequestParam Map<String, String> map, HttpSession session) throws IllegalStateException, IOException {
 		ModelAndView mav = new ModelAndView();
 		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
@@ -127,5 +128,5 @@ public class MemberController {
 		}
 		return mav;
 	}
-	
+*/	
 }

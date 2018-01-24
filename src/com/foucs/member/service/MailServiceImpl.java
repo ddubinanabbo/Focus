@@ -5,17 +5,16 @@ import java.io.File;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 
 public class MailServiceImpl implements MailService {
 	
 	// org.springframework.mail.javamail.JavaMailSender
-    private JavaMailSender javaMailSender;
+    @Autowired
+	private JavaMailSender javaMailSender;
  
-    public void setJavaMailSender(JavaMailSender javaMailSender) {
-        this.javaMailSender = javaMailSender;
-    }
  
     @Override
     public boolean send(String subject, String text, String from, String to, String filePath) {

@@ -15,6 +15,7 @@ import org.springframework.core.io.FileSystemResource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
@@ -30,17 +31,13 @@ import com.foucs.member.service.MemberService;
 @Controller
 @RequestMapping("/mail")
 public class EmailController {
-
+	
+	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
 	private MailService mailService;
 
-	public void setMemberService(MemberService memberService) {
-		this.memberService = memberService;
-	}
-
-	public void setMailService(MailService mailService) {
-		this.mailService = mailService;
-	}
 
 	@RequestMapping(value = "/mail.focus", method = RequestMethod.POST)
 	public void sendMailPassword(HttpSession session, @RequestParam String M_ID, @RequestParam String M_EMAIL,
