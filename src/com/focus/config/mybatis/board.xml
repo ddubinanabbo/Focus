@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
-</beans>
+<mapper namespace="com.focus.board.dao.BoardDao">
+    
+    <select id="listArticle" parameterType="java.util.Map" resultType="com.focus.board.model.BoardDto">
+    		select b.*
+        from (
+                select rownum rn, a.*
+                from (
+                        select  b.seq, b.name, b.id, b.email, b.subject, 
+                                b.content, b.hit, b.bcode,
+                                case 
+                                    when to_char(b.logtime, 'yymmdd') = to_char(sysdate, 'yymmdd')
+                                    then to_char(b.logtime, 'hh24:mi:ss')
+                                    else to_char(b.logtime, 'yy.mm.dd')
+                                end logtime, 
+                                r.rseq, r.ref, r.lev, r.step, r.pseq, r.reply
+                        from board b, reboard r
+                        where b.seq = r.seq
+                        and bcode = #{bcode}
+        <if test="word != null and word != ''">
+            <if test="key == 'subject'">
+                and b.subject like '%'||#{word}||'%'
+            </if>
+            <if test="key != 'subject'">
+                and b.${key} = #{word}
+            </if>
+        </if>
+                        order by ref desc, step
+                        ) a
+                where rownum &lt;= #{end}
+                ) b
+        where b.rn &gt; #{start}    
+    
+    </select>
+    
+    
+</mapper>

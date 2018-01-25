@@ -7,9 +7,11 @@
 
 		
 	<context:annotation-config/>
-	<bean class="com.focus.member.controller.EmailController"></bean>
-
+	<bean class="com.focus.admin.board.controller.BoardAdminController"></bean>
+ 	<bean class="com.focus.member.controller.EmailController"></bean>
 	<bean class="com.focus.member.controller.MemberController"></bean>
+	<bean class="com.focus.board.controller.ReboardController"></bean> 
+	
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="UTF-8"/>

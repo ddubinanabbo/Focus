@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.focus.board.dao.ReboardDao">
+    
+    <select id="listArticle" parameterType="java.util.Map" resultType="com.focus.board.model.ReboardDto">
+    		select b.*
+        from (
+                select (@ROWNUM := @ROWNUM + 1) rn, a.*
+                from (
+                        select  b.seq, b.name, b.id, b.email, b.subject, 
+                                b.content, b.hit, b.bcode,
+                                case 
+                                    when date_format(b.logtime, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d')
+                                    then date_format(b.logtime, '%H:%i:%s')
+                                    else date_format(b.logtime, '%Y-%m-%d')
+                                end logtime, 
+                                r.rseq, r.ref, r.lev, r.step, r.pseq, r.reply
+                        from board b, reboard r
+                        where b.seq = r.seq
+                        and bcode = #{bcode}
+        <if test="word != null and word != ''">
+            <if test="key == 'subject'">
+                and b.subject like '%'||#{word}||'%'
+            </if>
+            <if test="key != 'subject'">
+                and b.${key} = #{word}
+            </if>
+        </if>
+                        order by ref desc, step LIMIT 18446744073709551615
+                        ) a
+                ,(SELECT @ROWNUM := 0) AS X limit #{end}
+                ) b
+        where b.rn &gt; #{start}    
+    
+    </select>
+    <insert id="bwriteArticle" parameterType="com.focus.board.model.ReboardDto">
+        insert into board ( name, id, email, subject, content, hit, logtime, bcode, mseq)
+            values ( #{name}, #{id}, #{email}, #{subject}, #{content}, 0, now(), #{bcode} , #{mseq})
+    </insert>
+      <insert id="rwriteArticle" parameterType="com.focus.board.model.ReboardDto">
+        insert into reboard ( seq, ref, lev, step, pseq, reply)
+            values ( #{seq}, #{ref}, 0, 0, 0, 0)
+    </insert>
+    
+    <select id="viewArticle" parameterType="int" resultType="com.focus.board.model.ReboardDto">
+        select b.seq, b.name, b.id, b.email, b.subject, 
+               b.content, b.hit, b.logtime, b.bcode,b.mseq,
+               r.rseq, r.ref, r.lev, r.step, r.pseq, r.reply
+        from board b, reboard r
+        where b.seq = r.seq
+        and b.seq = #{seq}
+    </select>
+    
+</mapper>

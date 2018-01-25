@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
-</beans>
+<mapper namespace="com.focus.admin.board.dao.BoardAdminDao">
+    
+    
+    <select id="boardMenu" resultType="com.focus.admin.board.model.BoardListDto">
+    	select bl.bcode, bl.bname, bl.btype, c.ccode, c.cname,(CASE bl.btype 
+    	 WHEN 1 THEN 'board'
+		 WHEN 2 THEN 'reboard'
+		 WHEN 3 THEN 'bbs'
+		 WHEN 4 THEN 'album' END) controller
+from board_list bl, category c
+where bl.ccode = c.ccode and c.ccode != 8
+order by bl.bcode    
+    </select>
+    
+</mapper>

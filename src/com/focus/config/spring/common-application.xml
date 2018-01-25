@@ -7,6 +7,15 @@
 
 	<context:annotation-config/>
 	
+	<bean id="boardAdminService" class="com.focus.admin.board.service.BoardAdminSerivceImpl"></bean>
+ 	
+	<bean id="mailService" class="com.foucs.member.service.MailServiceImpl"></bean>
+
+	<bean id="memberService" class="com.foucs.member.service.MemberServiceImpl"></bean>
+	
+	<bean id="reboardService" class="com.focus.board.service.ReboardServiceImpl"></bean>
+	<bean id="commonService" class="com.focus.common.service.CommonServiceImpl"></bean>
+	
 	<bean id="javaMailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
 		 <property name="host" value="smtp.gmail.com" /> 
 		 <property name="port" value="587" />
@@ -18,12 +27,7 @@
 	    		 <prop key="mail.smtp.starttls.enable">true</prop>
 		     </props> 
 		 </property> 
-	</bean>
-	
-	<bean id="mailService" class="com.foucs.member.service.MailServiceImpl"></bean>
-	
-	<bean id="memberService" class="com.foucs.member.service.MemberServiceImpl"></bean>
-	
+	</bean>	
 		
 	<bean id="ds" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
 		<property name="driverClass" value="org.mariadb.jdbc.Driver" />
@@ -33,7 +37,15 @@
 	</bean>
 
 	<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="mapperLocations" value="classpath:com/focus/config/mybatis/member.xml"/>
+		<!-- <property name="mapperLocations" value="classpath:/com/focus/config/mybatis/*.xml"/> -->
+		<property name="mapperLocations"> <list>
+		<value>classpath:com/focus/config/mybatis/boardadmin.xml</value> 
+		<value>classpath:com/focus/config/mybatis/member.xml</value>
+		<value>classpath:com/focus/config/mybatis/common.xml</value>
+		<value>classpath:com/focus/config/mybatis/reboard.xml</value>
+		 </list>
+		  </property>
+
 		<property name="dataSource" ref="ds"></property>
 	</bean>
 	

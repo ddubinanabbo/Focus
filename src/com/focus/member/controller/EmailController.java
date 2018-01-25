@@ -33,10 +33,10 @@ import com.foucs.member.service.MemberService;
 public class EmailController {
 	
 	@Autowired
-	private MemberService memberService;
+	private MailService mailService;
 	
 	@Autowired
-	private MailService mailService;
+	private MemberService memberService;
 
 
 	@RequestMapping(value = "/mail.focus", method = RequestMethod.POST)

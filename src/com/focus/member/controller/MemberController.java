@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,8 +65,8 @@ public class MemberController {
 		System.out.println(">>>>>>" + memberDto.getM_NAME());
 		session.setAttribute("userInfo", memberDto);
 		if(url.contains("login.jsp"))
-			url = "/main";
-		return url;
+			url = "/main.jsp";
+		return "redirect:" + url;
 		
 	}
 	
