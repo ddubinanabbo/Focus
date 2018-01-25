@@ -7,8 +7,12 @@
 
 		
 	<context:annotation-config/>
+<<<<<<< HEAD
 	<bean class="com.focus.admin.board.controller.BoardAdminController"></bean>
  	<bean class="com.focus.member.controller.EmailController"></bean>
+=======
+	<bean class="com.focus.member.controller.EmailController"></bean>
+>>>>>>> ecae838187354d9a238558e6050df35fb3ea9c93
 	<bean class="com.focus.member.controller.MemberController"></bean>
 	<bean class="com.focus.board.controller.ReboardController"></bean> 
 	

@@ -26,7 +26,7 @@
     /* Set gray background color and 100% height */
     .sidenav {
       background-color: #343957;
-      padding-top : 70px;
+      padding-top : 100px;
       height: 100%;
     }
     
@@ -69,12 +69,19 @@
       <ul class="nav navbar-nav navbar-right">
      
 <c:if test="${userInfo == null}">
-		<li><a href="${root }/user/login.focus"><span class="glyphicon glyphicon-log-in"></span>  접속</a></li>
-        <li><a href="${root}/user/join.focus"><span class="glyphicon glyphicon-pencil"></span> 회원가입</a></li>
+		<li style="margin-top:7px;"><a href="${root }/user/login.focus"><span class="glyphicon glyphicon-log-in"></span>  접속</a></li>
+        <li style="margin-top:7px;"><a href="${root}/user/join.focus"><span class="glyphicon glyphicon-pencil"></span> 회원가입</a></li>
 </c:if>
 <c:if test="${userInfo != null}">
-		<li><a href="${root }/profile.jsp"><span class="glyphicon ti-user"></span> ${userInfo.m_NAME}님</a></li>
-        <li><a href="${root}/user/logout.focus"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+		<c:if test="${profileInfo != null}">
+			<li><img style="margin-top:7px; margin-bottom : 2px; border-radius: 50%;" src="${root}/profile/${profileInfo.SAVEFOLDER}/${profileInfo.SAVE_PHOTO}" height="50" width="50"></li>
+			<li style="margin-top:7px;"><a href="${root }/profile.jsp">${userInfo.m_NAME}님</a></li>
+		</c:if>
+		<c:if test="${profileInfo == null}">
+			<li style="margin-top:7px;"><a href="${root }/profile.jsp"><span class="glyphicon ti-user"></span>${userInfo.m_NAME}님</a></li>
+		</c:if>
+        	<li style="margin-top:7px;"><a href="${root}/user/logout.focus"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
+        
 </c:if>
         
       	
@@ -90,4 +97,4 @@
     </div>
 
 
-    <div class="col-sm-10" style="padding-top : 70px;">
+    <div class="col-sm-10" style="padding-top : 110px;">

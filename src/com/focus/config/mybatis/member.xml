@@ -18,9 +18,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
     
     <select id="login" parameterType="java.util.Map" resultType="com.focus.member.model.MemberDto">
-        select MSEQ, M_ID, M_NAME, M_PASS, M_JOB, M_AGE, M_TEL, M_EMAIL, M_JOINDATE
-        from member
+        select m.MSEQ, m.M_ID, m.M_NAME, m.M_PASS, m.M_JOB, m.M_AGE, m.M_TEL, m.M_EMAIL, m.M_JOINDATE
+        from member m
         where M_ID = #{userid} and M_PASS = #{userpwd}
+        	
     </select>
     
     <select id="findAccount" parameterType="java.util.Map" resultType="com.focus.member.model.MemberDto">
@@ -36,7 +37,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	where M_ID = #{userid}
     </update>
     
+    <insert id="uploadProfile" parameterType="com.focus.member.model.ProfileDto">
+    	insert into profile (ORIGIN_PHOTO, SAVE_PHOTO, SAVEFOLDER, TYPE, MSEQ)
+		 values (#{ORIGIN_PHOTO},#{SAVE_PHOTO},#{SAVEFOLDER},#{TYPE},#{MSEQ}) 
+		 on duplicate key
+		 update ORIGIN_PHOTO = values(ORIGIN_PHOTO),
+		   	  	SAVE_PHOTO = values(SAVE_PHOTO),
+		   	  	SAVEFOLDER = values(SAVEFOLDER),
+		   	  	TYPE = values(TYPE)
+    </insert>
     
+    <select id="viewProfile" parameterType="int" resultType="com.focus.member.model.ProfileDto">
+    	select PSEQ,ORIGIN_PHOTO, SAVE_PHOTO, SAVEFOLDER, TYPE, MSEQ
+    	 from profile
+    	where MSEQ = #{MSEQ}
+    </select>
     
     
 </mapper>
