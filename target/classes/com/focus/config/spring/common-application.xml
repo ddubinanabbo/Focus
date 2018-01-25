@@ -37,7 +37,6 @@
 	</bean>
 
 	<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean">
-<<<<<<< HEAD
 		<!-- <property name="mapperLocations" value="classpath:/com/focus/config/mybatis/*.xml"/> -->
 		<property name="mapperLocations"> <list>
 		<value>classpath:com/focus/config/mybatis/boardadmin.xml</value> 
@@ -47,10 +46,6 @@
 		 </list>
 		  </property>
 
-=======
->>>>>>> ecae838187354d9a238558e6050df35fb3ea9c93
-		<property name="dataSource" ref="ds"></property>
-		<property name="mapperLocations" value="classpath:com/focus/config/mybatis/member.xml"/>
 	</bean>
 	
 	<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">

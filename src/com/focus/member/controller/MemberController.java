@@ -72,18 +72,11 @@ public class MemberController {
 		MemberDto memberDto = memberService.login(M_ID, M_PASS);
 		ProfileDto profileDto = memberService.viewProfile(memberDto.getMSEQ());
 		session.setAttribute("userInfo", memberDto);
-<<<<<<< HEAD
-		if(url.contains("login.jsp"))
-			url = "/main.jsp";
-		return "redirect:" + url;
-		
-=======
 		session.setAttribute("profileInfo", profileDto);
 		if (url.contains("login.jsp"))
 			url = "/main.jsp";
 		return "redirect:" + url;
 
->>>>>>> ecae838187354d9a238558e6050df35fb3ea9c93
 	}
 
 	@RequestMapping(value = "/logout.focus", method = RequestMethod.GET)
