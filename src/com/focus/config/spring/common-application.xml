@@ -5,16 +5,14 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.1.xsd">
 
-	<context:annotation-config/>
-	
-	<bean id="boardAdminService" class="com.focus.admin.board.service.BoardAdminSerivceImpl"></bean>
- 	
+	<context:annotation-config/>	
+	<bean id="boardAdminService" class="com.focus.admin.board.service.BoardAdminSerivceImpl"></bean> 	
 	<bean id="mailService" class="com.foucs.member.service.MailServiceImpl"></bean>
-
-	<bean id="memberService" class="com.foucs.member.service.MemberServiceImpl"></bean>
-	
+	<bean id="memberService" class="com.foucs.member.service.MemberServiceImpl"></bean>	
 	<bean id="reboardService" class="com.focus.board.service.ReboardServiceImpl"></bean>
 	<bean id="commonService" class="com.focus.common.service.CommonServiceImpl"></bean>
+	
+	
 	
 	<bean id="javaMailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
 		 <property name="host" value="smtp.gmail.com" /> 
@@ -36,16 +34,18 @@
 		<property name="password" value="root" />
 	</bean>
 
-	<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean">
+
 		<!-- <property name="mapperLocations" value="classpath:/com/focus/config/mybatis/*.xml"/> -->
-		<property name="mapperLocations"> <list>
+	<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="ds"/>
+		<property name="mapperLocations"> 
+		<list>
 		<value>classpath:com/focus/config/mybatis/boardadmin.xml</value> 
 		<value>classpath:com/focus/config/mybatis/member.xml</value>
 		<value>classpath:com/focus/config/mybatis/common.xml</value>
 		<value>classpath:com/focus/config/mybatis/reboard.xml</value>
 		 </list>
-		  </property>
-
+		 </property>
 	</bean>
 	
 	<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">
