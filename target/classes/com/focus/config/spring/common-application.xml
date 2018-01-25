@@ -33,8 +33,8 @@
 	</bean>
 
 	<bean id="ssfb" class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="mapperLocations" value="classpath:com/focus/config/mybatis/member.xml"/>
 		<property name="dataSource" ref="ds"></property>
+		<property name="mapperLocations" value="classpath:com/focus/config/mybatis/member.xml"/>
 	</bean>
 	
 	<bean id="ss" class="org.mybatis.spring.SqlSessionTemplate">

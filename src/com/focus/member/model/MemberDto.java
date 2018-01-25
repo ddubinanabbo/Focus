@@ -1,6 +1,6 @@
 package com.focus.member.model;
 
-public class MemberDto {
+public class MemberDto extends ProfileDto {
 	
 	int MSEQ;
 	String M_ID;

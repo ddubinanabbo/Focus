@@ -1,13 +1,17 @@
 package com.focus.member.model;
 
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProfileDto {
 	
-	int PSEQ;
-	String ORIGIN_PHOTO;
-	String SAVE_PHOTO;
-	String SAVEFOLDER;
-	String TYPE;
-	String MSEQ;
+	private int PSEQ;
+	private String ORIGIN_PHOTO;
+	private String SAVE_PHOTO;
+	private String SAVEFOLDER;
+	private String TYPE;
+	private int MSEQ;
+	private MultipartFile upfile;
 	
 	public int getPSEQ() {
 		return PSEQ;
@@ -30,6 +34,12 @@ public class ProfileDto {
 	public String getSAVEFOLDER() {
 		return SAVEFOLDER;
 	}
+	public int getMSEQ() {
+		return MSEQ;
+	}
+	public void setMSEQ(int mSEQ) {
+		MSEQ = mSEQ;
+	}
 	public void setSAVEFOLDER(String sAVEFOLDER) {
 		SAVEFOLDER = sAVEFOLDER;
 	}
@@ -39,11 +49,11 @@ public class ProfileDto {
 	public void setTYPE(String tYPE) {
 		TYPE = tYPE;
 	}
-	public String getMSEQ() {
-		return MSEQ;
+	public MultipartFile getUpfile() {
+		return upfile;
 	}
-	public void setMSEQ(String mSEQ) {
-		MSEQ = mSEQ;
+	public void setUpfile(MultipartFile upfile) {
+		this.upfile = upfile;
 	}
-
+	
 }

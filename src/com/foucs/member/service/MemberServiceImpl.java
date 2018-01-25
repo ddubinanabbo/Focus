@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.focus.member.dao.MemberDao;
 import com.focus.member.model.MemberDto;
+import com.focus.member.model.ProfileDto;
 
 public class MemberServiceImpl implements MemberService {
 	
@@ -58,6 +59,19 @@ public class MemberServiceImpl implements MemberService {
 		map.put("userpwd", M_PASS);
 		memberDao.updatepwd(map);
 		
+	}
+
+	@Override
+	public int uploadProfile(ProfileDto profileDto) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		memberDao.uploadProfile(profileDto);
+		return 1;
+	}
+
+	@Override
+	public ProfileDto viewProfile(int MSEQ) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		return memberDao.viewProfile(MSEQ);
 	}
 
 }
