@@ -12,4 +12,5 @@ public interface MemberService {
 	void updatepwd(String M_ID, String M_PASS);
 	int uploadProfile(ProfileDto profileDto);
 	ProfileDto viewProfile(int MSEQ);
+	int modifyprofile(MemberDto memberDto);
 }

@@ -14,5 +14,6 @@ public interface MemberDao {
 	void updatepwd(Map<String, String> map);
 	int uploadProfile(ProfileDto profileDto);
 	ProfileDto viewProfile(int MSEQ);
+	int modifyprofile(MemberDto memberDto);
 
 }
