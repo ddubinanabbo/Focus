@@ -15,4 +15,16 @@ public interface ReboardDao {
 
 	ReboardDto viewArticle(int seq);
 
+	void updateStep(ReboardDto reboardDto);
+
+	void bcommentArticle(ReboardDto reboardDto);
+
+	void rcommentArticle(ReboardDto reboardDto);
+
+	void updateReply(int pseq);
+
+	int modifyArticle(ReboardDto reboardDto);
+
+	void deleteBoard(int seq);
+
 }

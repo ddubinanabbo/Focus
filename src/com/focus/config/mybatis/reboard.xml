@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 select (@ROWNUM := @ROWNUM + 1) rn, a.*
                 from (
                         select  b.seq, b.name, b.id, b.email, b.subject, 
-                                b.content, b.hit, b.bcode,
+                                b.content, b.hit, b.bcode,b.status,
                                 case 
                                     when date_format(b.logtime, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d')
                                     then date_format(b.logtime, '%H:%i:%s')
@@ -20,7 +20,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                                 r.rseq, r.ref, r.lev, r.step, r.pseq, r.reply
                         from board b, reboard r
                         where b.seq = r.seq
-                        and bcode = #{bcode}
+                        and bcode = #{bcode} and status = 1
         <if test="word != null and word != ''">
             <if test="key == 'subject'">
                 and b.subject like '%'||#{word}||'%'
@@ -37,8 +37,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     
     </select>
     <insert id="bwriteArticle" parameterType="com.focus.board.model.ReboardDto">
-        insert into board ( name, id, email, subject, content, hit, logtime, bcode, mseq)
-            values ( #{name}, #{id}, #{email}, #{subject}, #{content}, 0, now(), #{bcode} , #{mseq})
+        insert into board ( name, id, email, subject, content, hit, logtime, bcode, mseq , status)
+            values ( #{name}, #{id}, #{email}, #{subject}, #{content}, 0, now(), #{bcode} , #{mseq}, 1)
     </insert>
       <insert id="rwriteArticle" parameterType="com.focus.board.model.ReboardDto">
         insert into reboard ( seq, ref, lev, step, pseq, reply)
@@ -54,4 +54,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         and b.seq = #{seq}
     </select>
     
+     <update id="updateStep" parameterType="com.focus.board.model.ReboardDto">
+        update reboard
+        set step = step + 1
+        where ref = #{ref} 
+        and step > #{step}
+    </update>
+    
+    <insert id="bcommentArticle" parameterType="com.focus.board.model.ReboardDto">
+        insert into board ( name, id, email, subject, content, hit, logtime, bcode, mseq,status)
+            values ( #{name}, #{id}, #{email}, #{subject}, #{content}, 0, now(), #{bcode}, #{mseq}, 1)
+    </insert>
+    
+    <insert id="rcommentArticle" parameterType="com.focus.board.model.ReboardDto">
+        insert into reboard ( seq, ref, lev, step, pseq, reply)
+            values ( #{seq}, #{ref}, #{lev} + 1, #{step} + 1, #{pseq}, 0)
+    </insert>
+    
+    <update id="updateReply" parameterType="int">
+        update reboard
+        set reply = reply + 1
+        where seq = #{pseq}
+    </update>
+    
+    <update id="modifyArticle" parameterType="com.focus.board.model.ReboardDto">
+    	update board
+    	set subject = #{subject}, content = #{content}
+    	where seq = #{seq}
+    </update>
+    
+    <delete id="deleteBoard">
+    	update board
+    	set status = 0
+    	where seq = #{seq}
+    </delete>
 </mapper>

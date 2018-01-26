@@ -20,6 +20,7 @@ public class CommonServiceImpl implements CommonService {
 	public int getNextSeq() {
 		CommonDao commonDao = sqlSession.getMapper(CommonDao.class);
 		return commonDao.getNextSeq();
+		
 	}
 	
 	@Override

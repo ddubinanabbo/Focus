@@ -24,7 +24,7 @@ control = "/reboard";
           <c:forEach var="article" items="${articlelist }">
            <tr >
                 <th scope="row">${article.seq }</th>
-                <td> <a href="javascript:viewArticle('${bcode }','${ pg }','${ key }','${ word }','${article.seq }');">${article.subject }</a></td>
+                <td><img src="${root }/images/blank.gif" width="${article.lev * 15}" height="1"><a href="javascript:viewArticle('${bcode }','${ pg }','${ key }','${ word }','${article.seq }');">${article.subject }</a></td>
                 <td align="right"><span class="badge badge-primary">${article.name }</span></td>
                 <td align="right">${article.logtime }</td>
            </tr>

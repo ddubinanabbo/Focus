@@ -5,7 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.focus.common.dao.CommonDao">
  <select id="getNextSeq" resultType="int">        
-    select IFNULL(MAX(seq),0)+1  from board    
+    SELECT ifnull(MAX(seq),0)+1 from board
     </select>
     
     <select id="getNewArticleCount" parameterType="int" resultType="int">

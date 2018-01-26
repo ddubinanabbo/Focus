@@ -12,20 +12,10 @@ function moveReply() {
    document.getElementById("word").value = "";
    document.getElementById("seq").value = "${article.seq}";
    
-   document.getElementById("commonForm").action = root+ control + "/reply.focus";
+   document.getElementById("commonForm").action = root+ control + "/comment.focus";
    document.getElementById("commonForm").submit();
 }
 
-function moveModify(bcode,pg,key,word,seq) {
-   document.getElementById("bcode").value = bcode;
-   document.getElementById("pg").value = pg;
-   document.getElementById("key").value = key;
-   document.getElementById("word").value = word;
-   document.getElementById("seq").value = seq;
-   
-   document.getElementById("commonForm").action = root + control + "/modify.focus";
-   document.getElementById("commonForm").submit();
-}
 </script>
 
       <h3><i class="ti-clipboard"></i>  글보기</h3>      
@@ -37,8 +27,8 @@ function moveModify(bcode,pg,key,word,seq) {
                 <a href="javascript:listArticle('${bcode }','1','','');" class="btn btn-success" role="button">글 목록</a>
                 <a href="javascript:moveReply();" class="btn btn-info" role="button">답글 쓰기</a>
                 	<c:if test="${userInfo.m_ID == article.id }">
-                	<a href="javascript:deleteArticle('${bcode }','${article.seq }','${article.reply }')" class="btn btn-danger" role="button">삭제</a>
-      				<a href="javascript:moveModify('${bcode }','${pg }','${key }','${word }','${article.seq }')" class="btn btn-primary" role="button">수정</a>
+                	<a href="javascript:deleteArticle('${bcode }','${article.seq }','${article.reply }');" class="btn btn-danger" role="button">삭제</a>
+      				<a href="javascript:moveModify('${bcode }','${pg }','${key }','${word }','${article.seq }');" class="btn btn-primary" role="button">수정</a>
       				</c:if>
 				</td>
             </tr>

@@ -14,4 +14,10 @@ public interface ReboardService {
 
 	ReboardDto viewArticle(int seq);
 
+	int commentArticle(ReboardDto reboardDto);
+
+	int modifyArticle(ReboardDto reboardDto);
+
+	void deleteArticle(int seq);
+
 }
