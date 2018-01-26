@@ -74,4 +74,11 @@ public class MemberServiceImpl implements MemberService {
 		return memberDao.viewProfile(MSEQ);
 	}
 
+	@Override
+	public int modifyprofile(MemberDto memberDto) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+		memberDao.modifyprofile(memberDto);
+		return 1;
+	}
+
 }

@@ -11,15 +11,22 @@ $(document).ready(function(){
 
 $(document).ready(function(){
 	$("#modifybtn").click(function(){
-		if($("#M_PASS").val() != $("#passok").val()) {
-			alert("비밀번호를 확인하세요!!!!");
-			return;
-		}else if($("#M_PASS").val() == "" || $("#passok").val() == "") {
-			alert("비밀번호가 비어있을순 없습니다.");
+		var txt;
+		var r = confirm("정말로 수정하시겠습니까?");
+		if (r == true) {
+			if($("#M_PASS").val() != $("#passok").val()) {
+				alert("비밀번호를 확인하세요!!!!");
+				return;
+			}else if($("#M_PASS").val() == "" || $("#passok").val() == "") {
+				alert("비밀번호가 비어있을순 없습니다.");
+				return;
+			}
+			document.modifyForm.action = "${root}/user/modifyprofile.focus";
+			document.modifyForm.submit();
+		} else {
+			alert("취소하셨습니다");
 			return;
 		}
-		document.profileForm.action = "${root}/user/upprofile.focus";
-		document.profileForm.submit();
 	});
 });
 </script>
@@ -80,7 +87,7 @@ $(document).ready(function(){
                           <ul class="nav nav-tabs" role="tablist"></ul>
                                   <h4>자기 소개</h4>
                                   <div>
-                                    <input type="text" id="M_INTRODUCE" name="M_INTRODUCE" class="form-control" value="${userInfo.m_INTRODUCE}">                                    
+                                    <input type="text" id="M_INTRODUCE" name="M_INTRODUCE" class="form-control" value="${userInfo.m_INTRODUCE}">
                                   </div>
                                  </div>
                             <ul class="nav nav-tabs" role="tablist"></ul>
@@ -92,13 +99,13 @@ $(document).ready(function(){
                             <h4>스킬</h4>
                            <div>
                             <ul>
-                              <li><input type="text" id="M_CAREER" name="M_CAREER" class="form-control" value="${userInfo.m_SKILL}"></li>
+                              <li><input type="text" id="M_SKILL" name="M_SKILL" class="form-control" value="${userInfo.m_SKILL}"></li>
                             </ul>
                           </div>
                           </form>
                           <div align="right" style="padding-bottom:5px;">                               
                                 <button type="submit" id="modifybtn" class="btn btn-primary btn-flat m-b-30 m-t-30">수정</button>
-                                <button type="submit" id="registerbtn" class="btn btn-danger">취소</button>
+                                <a href="javascript:history.back();"><button type="button" class="btn btn-danger">취소</button></a>
                                 </div>                         
                           </div>
                            

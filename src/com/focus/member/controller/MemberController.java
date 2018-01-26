@@ -129,5 +129,37 @@ public class MemberController {
 		}
 		return path;
 	}
+	
+	
+	
+	@RequestMapping(value = "/modifyprofile.focus", method = RequestMethod.POST)
+	public ModelAndView modifyprofile(@RequestParam(value = "M_PASS", required = true) String M_PASS,
+			@RequestParam(value = "M_INTRODUCE", required = true) String M_INTRODUCE,
+			@RequestParam(value = "M_CAREER", required = true) String M_CAREER,
+			@RequestParam(value = "M_SKILL", required = true) String M_SKILL,
+			HttpSession session, HttpServletResponse response) throws IOException {
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
+		ModelAndView mav = new ModelAndView();
+		String viewName = "/main";
+		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
+		if(memberDto != null) {
+			memberDto.setM_PASS(M_PASS);
+			memberDto.setM_INTRODUCE(M_INTRODUCE);
+			memberDto.setM_CAREER(M_CAREER);
+			memberDto.setM_SKILL(M_SKILL);
+			int cnt = memberService.modifyprofile(memberDto);
+			if(cnt != 0) {
+				out.println("<script>alert('수정이 완료되었습니다');</script>");
+				mav.addObject("userInfo", memberDto);
+				viewName = "/profile";
+			}else {
+				out.println("<script>alert('실패하였습니다');</script>");
+				viewName = "/main";
+			}
+		}
+		mav.setViewName(viewName);
+		return mav;
+	}
 
 }

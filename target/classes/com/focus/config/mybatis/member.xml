@@ -12,15 +12,16 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
       <insert id="registerMember" parameterType="com.focus.member.model.MemberDto">
-        insert into member (M_ID, M_PASS, M_NAME, M_JOB, M_AGE, M_EMAIL, M_TEL, M_INTRODUCE, M_CAREER, M_SKILL M_JOINDATE)
-        values(#{M_ID}, #{M_PASS}, #{M_NAME}, #{M_JOB}, #{M_AGE},#{M_EMAIL}, #{M_TEL}, ' ', ' ', ' ',  now()) 
+        insert into member (M_ID, M_PASS, M_NAME, M_JOB, M_AGE, M_EMAIL, M_TEL, M_INTRODUCE, M_CAREER, M_SKILL, M_JOINDATE, M_STATUS)
+        values(#{M_ID}, #{M_PASS}, #{M_NAME}, #{M_JOB}, #{M_AGE},#{M_EMAIL}, #{M_TEL}, ' ', ' ', ' ',  now(), 1) 
         
     </insert>
     
     <select id="login" parameterType="java.util.Map" resultType="com.focus.member.model.MemberDto">
-        select m.MSEQ, m.M_ID, m.M_NAME, m.M_PASS, m.M_JOB, m.M_AGE, m.M_TEL, m.M_EMAIL, m.M_JOINDATE
+        select m.MSEQ, m.M_ID, m.M_NAME, m.M_PASS, m.M_JOB, m.M_AGE, m.M_TEL, m.M_EMAIL, m.M_INTRODUCE, m.M_CAREER, m.M_SKILL, m.M_JOINDATE, m.M_STATUS
         from member m
         where M_ID = #{userid} and M_PASS = #{userpwd}
+        	and m.M_STATUS = 1
         	
     </select>
     
@@ -29,12 +30,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	from member
     	where M_EMAIL = #{usermail}
     	  and M_ID = #{userid}
+    	  and M_STATUS = 1
     </select>
     
     <update id="updatepwd" parameterType="java.util.Map">
     	update member
     	  set M_PASS = #{userpwd}
     	where M_ID = #{userid}
+    	and M_STATUS = 1
     </update>
     
     <insert id="uploadProfile" parameterType="com.focus.member.model.ProfileDto">
@@ -52,6 +55,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	 from profile
     	where MSEQ = #{MSEQ}
     </select>
+    
+    <update id="modifyprofile" parameterType="com.focus.member.model.MemberDto">
+    	update member
+    	   set M_PASS = #{M_PASS},
+    	       M_INTRODUCE = ifnull(#{M_INTRODUCE},' '),
+    	       M_CAREER = ifnull(#{M_CAREER},' '),
+    	       M_SKILL = ifnull(#{M_SKILL},' ')
+    	 where MSEQ = #{MSEQ}
+    </update>
     
     
 </mapper>
