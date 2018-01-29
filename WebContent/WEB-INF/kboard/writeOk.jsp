@@ -6,7 +6,7 @@ control = "/reboard";
 
 </script>
 
-       <h3><i class="ti-pencil-alt2"></i>  글쓰기 완료</h3>      
+       <h3><i class="ti-pencil-alt2"></i> 지식게시판 글쓰기 및 수정 완료</h3>      
 		
       <div class="container-fluid">
           

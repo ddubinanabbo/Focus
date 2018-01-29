@@ -11,8 +11,11 @@
 	<bean id="memberService" class="com.foucs.member.service.MemberServiceImpl"></bean>	
 	<bean id="reboardService" class="com.focus.board.service.ReboardServiceImpl"></bean>
 	<bean id="commonService" class="com.focus.common.service.CommonServiceImpl"></bean>
+	<bean id="albumService" class="com.focus.board.service.AlbumServiceImpl"></bean>
+	<bean id="bbsService" class="com.focus.board.service.BbsSerivceImpl"></bean>
+	<bean id="downLoad" class="com.focus.board.service.DownloadView"/>
 	
-	
+
 	
 	<bean id="javaMailSender" class ="org.springframework.mail.javamail.JavaMailSenderImpl" >
 		 <property name="host" value="smtp.gmail.com" /> 
@@ -44,6 +47,8 @@
 		<value>classpath:com/focus/config/mybatis/member.xml</value>
 		<value>classpath:com/focus/config/mybatis/common.xml</value>
 		<value>classpath:com/focus/config/mybatis/reboard.xml</value>
+		<value>classpath:com/focus/config/mybatis/album.xml</value>
+		<value>classpath:com/focus/config/mybatis/bbs.xml</value>
 		 </list>
 		 </property>
 	</bean>

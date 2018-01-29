@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/common/header_board.jsp" %>
 <script type="text/javascript">
-control = "/reboard";
+control = "/album";
 
 </script>
 
-       <h3><i class="ti-pencil-alt2"></i> 지식게시판 글쓰기 실패</h3>      
+       <h3><i class="ti-pencil-alt2"></i> 책 추천 삭제 완료</h3>      
 		
       <div class="container-fluid">
           

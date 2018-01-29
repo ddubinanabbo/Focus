@@ -83,7 +83,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	where seq = #{seq}
     </update>
     
-    <delete id="deleteBoard">
+    <delete id="deleteBoard" parameterType="int">
     	update board
     	set status = 0
     	where seq = #{seq}
