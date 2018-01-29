@@ -81,4 +81,14 @@ public class MemberServiceImpl implements MemberService {
 		return 1;
 	}
 
+	@Override
+	public MemberDto checksocialid(String slid, String slname) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("snsid", slid);
+		map.put("snspwd", slname);
+		return memberDao.checksocialid(map);
+	}
+
 }

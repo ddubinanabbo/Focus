@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -74,7 +75,7 @@ public class MemberController {
 		ProfileDto profileDto = memberService.viewProfile(memberDto.getMSEQ());
 		session.setAttribute("userInfo", memberDto);
 		session.setAttribute("profileInfo", profileDto);
-		if (url.contains("login.jsp"))
+		if (url.contains("login.jsp") || url.contains("join.jsp"))
 			url = "/main.jsp";
 		return "redirect:" + url;
 
@@ -160,6 +161,35 @@ public class MemberController {
 		}
 		mav.setViewName(viewName);
 		return mav;
+	}
+	
+	@RequestMapping(value = "/sociallogin.focus", method = RequestMethod.GET)
+	public String sociallogin(@RequestParam(value = "slid", required = true) String slid,
+			@RequestParam(value = "slname", required = true) String slname, HttpSession session, HttpServletRequest request) {
+		System.out.println("나 들어왔다 여기까지 ㅎㅎ");
+		System.out.println(slname);
+		System.out.println(slid);
+		String url = request.getHeader("referer");
+		MemberDto memberDto = memberService.checksocialid(slid, slname);
+		if(memberDto != null) {
+			ProfileDto profileDto = memberService.viewProfile(memberDto.getMSEQ());
+			session.setAttribute("userInfo", memberDto);
+			session.setAttribute("profileInfo", profileDto);
+			if (url.contains("login.jsp") || url.contains("join.jsp")) {
+				url = "/main.jsp";
+			}
+			return "redirect:" + url;
+		}
+		return "redirect:/snsjoin.jsp?slid=" +slid + "&slname=" + slname;
+//		String url = request.getHeader("referer");
+//		MemberDto memberDto = memberService.login(M_ID, M_PASS);
+//		ProfileDto profileDto = memberService.viewProfile(memberDto.getMSEQ());
+//		session.setAttribute("userInfo", memberDto);
+//		session.setAttribute("profileInfo", profileDto);
+//		if (url.contains("login.jsp") || url.contains("join.jsp"))
+//			url = "/main.jsp";
+//		return "redirect:" + url;
+
 	}
 
 }

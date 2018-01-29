@@ -65,5 +65,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	 where MSEQ = #{MSEQ}
     </update>
     
+    <select id="checksocialid" parameterType="java.util.Map" resultType="com.focus.member.model.MemberDto">
+    	select M_ID, M_PASS
+    	  from member
+    	 where M_ID = #{snsid}
+    	   and M_pass = #{snspwd}
+    </select>
+    
     
 </mapper>

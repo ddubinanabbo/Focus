@@ -59,8 +59,11 @@ $(document).ready(function(){
 						        <input type="file" id="upfile" name="upfile">
 						          <div class="caption">
 						        </div>
+						        <div align="right">
+						        <button type="submit" id="uploadprofile" class="btn btn-primary btn-flat m-b-30 m-t-30">프로필 저장</button>
+						        </div>
 						      </div>
-						      <button type="submit" id="uploadprofile" class="btn btn-primary btn-flat m-b-30 m-t-30">프로필 저장</button>
+						      
                           </div>
                           </form>
                           <h4>기본 정보</h4>

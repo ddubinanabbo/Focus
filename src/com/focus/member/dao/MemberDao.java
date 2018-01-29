@@ -15,5 +15,6 @@ public interface MemberDao {
 	int uploadProfile(ProfileDto profileDto);
 	ProfileDto viewProfile(int MSEQ);
 	int modifyprofile(MemberDto memberDto);
+	MemberDto checksocialid(Map<String, String> map);
 
 }
