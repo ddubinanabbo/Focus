@@ -104,6 +104,106 @@ public class ReboardController {
 		}
 		return mav;
 	}
+	
+	@RequestMapping(value="/comment.focus", method=RequestMethod.GET)
+	public ModelAndView comment(@RequestParam Map<String, String> map,
+			HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
+		if(memberDto != null) {
+			int seq = Integer.parseInt(map.get("seq"));
+			ReboardDto reboardDto = reboardService.viewArticle(seq);
+			mav.addObject("querystring", map);
+			mav.addObject("article", reboardDto);
+			mav.setViewName("/WEB-INF/kboard/comment");
+		} else {
+			mav.setViewName("/login");
+		}
+		return mav;
+	}
 
+	@RequestMapping(value="/comment.focus", method=RequestMethod.POST)
+	public ModelAndView comment(ReboardDto reboardDto, @RequestParam Map<String, String> map,
+			HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
+		if(memberDto != null) {
+			int seq = commonService.getNextSeq();
+			System.out.println("SEQ : " + seq);
+			reboardDto.setSeq(seq);
+			reboardDto.setMseq(memberDto.getMSEQ());
+			reboardDto.setId(memberDto.getM_ID());
+			reboardDto.setName(memberDto.getM_NAME());
+			reboardDto.setEmail(memberDto.getM_EMAIL());
+			int cnt = reboardService.commentArticle(reboardDto);
+			mav.addObject("querystring", map);
+			mav.addObject("seq", seq);
+			mav.setViewName("/WEB-INF/kboard/writeOk");
+		} else {
+			mav.setViewName("/login");
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value="/modify.focus", method=RequestMethod.GET)
+	public ModelAndView modify(@RequestParam Map<String, String> map,
+			HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
+		if(memberDto != null) {
+			int seq = Integer.parseInt(map.get("seq"));
+			ReboardDto reboardDto = reboardService.viewArticle(seq);
+			mav.addObject("querystring", map);
+			mav.addObject("article", reboardDto);
+			mav.setViewName("/WEB-INF/kboard/modify");
+		} else {
+			mav.setViewName("/login");
+		}
+		return mav;
+	}
+	@RequestMapping(value="/modify.focus", method=RequestMethod.POST)
+	public ModelAndView modify(ReboardDto reboardDto, @RequestParam Map<String, String> map,
+			HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
+		if(memberDto != null) {
+			int seq = Integer.parseInt(map.get("seq"));
+			reboardDto.setSeq(seq);
+			reboardDto.setMseq(memberDto.getMSEQ());
+			reboardDto.setId(memberDto.getM_ID());
+			reboardDto.setName(memberDto.getM_NAME());
+			reboardDto.setEmail(memberDto.getM_EMAIL());
+			int cnt = reboardService.modifyArticle(reboardDto);
+			if(cnt == 1) {
+				mav.setViewName("/WEB-INF/kboard/writeOk");
+				mav.addObject("querystring", map);
+				mav.addObject("seq", seq);
+			}else {
+				mav.setViewName("/WEB-INF/kboard/writeFail");
+				mav.addObject("querystring", map);
+				mav.addObject("seq", seq);
+			}
+		} else {
+			mav.setViewName("/login");
+		}
+		return mav;
+	}
+	
+	@RequestMapping(value="/delete.focus", method=RequestMethod.GET)
+	public ModelAndView delete(@RequestParam Map<String, String> map,
+			HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		MemberDto memberDto = (MemberDto) session.getAttribute("userInfo");
+		if(memberDto != null) {
+			int seq = Integer.parseInt(map.get("seq"));
+			reboardService.deleteArticle(seq);
+			mav.addObject("querystring", map);
+			mav.addObject("seq", seq);
+			mav.setViewName("/WEB-INF/kboard/deleteOK");
+		} else {
+			mav.setViewName("/login");
+		}
+		return mav;
+	}
 	
 }

@@ -13,5 +13,7 @@ public interface MemberService {
 	int uploadProfile(ProfileDto profileDto);
 	ProfileDto viewProfile(int MSEQ);
 	int modifyprofile(MemberDto memberDto);
-	MemberDto checksocialid(String slid, String slname);
+	int checksocialid(String slid, String slname);
+	int registersnsMember(MemberDto memberDto);
+	MemberDto snslogin(String slid,String slname);
 }

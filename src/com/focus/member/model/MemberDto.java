@@ -13,8 +13,15 @@ public class MemberDto extends ProfileDto {
 	String M_INTRODUCE;
 	String M_CAREER;
 	String M_SKILL;
+	String M_SNS;
 	
 	
+	public String getM_SNS() {
+		return M_SNS;
+	}
+	public void setM_SNS(String m_SNS) {
+		M_SNS = m_SNS;
+	}
 	public String getM_PASS() {
 		return M_PASS;
 	}

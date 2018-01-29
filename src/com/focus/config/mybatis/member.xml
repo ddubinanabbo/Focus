@@ -12,15 +12,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     
       <insert id="registerMember" parameterType="com.focus.member.model.MemberDto">
-        insert into member (M_ID, M_PASS, M_NAME, M_JOB, M_AGE, M_EMAIL, M_TEL, M_INTRODUCE, M_CAREER, M_SKILL, M_JOINDATE, M_STATUS)
-        values(#{M_ID}, #{M_PASS}, #{M_NAME}, #{M_JOB}, #{M_AGE},#{M_EMAIL}, #{M_TEL}, ' ', ' ', ' ',  now(), 1) 
+        insert into member (M_ID, M_PASS, M_NAME, M_JOB, M_AGE, M_EMAIL, M_TEL, M_INTRODUCE, M_CAREER, M_SKILL, M_JOINDATE, M_STATUS, M_SNS)
+        values(#{M_ID}, #{M_PASS}, #{M_NAME}, #{M_JOB}, #{M_AGE},#{M_EMAIL}, #{M_TEL}, ' ', ' ', ' ',  now(), 1, 0) 
         
     </insert>
     
     <select id="login" parameterType="java.util.Map" resultType="com.focus.member.model.MemberDto">
-        select m.MSEQ, m.M_ID, m.M_NAME, m.M_PASS, m.M_JOB, m.M_AGE, m.M_TEL, m.M_EMAIL, m.M_INTRODUCE, m.M_CAREER, m.M_SKILL, m.M_JOINDATE, m.M_STATUS
+        select m.MSEQ, m.M_ID, m.M_NAME, m.M_PASS, m.M_JOB, m.M_AGE, m.M_TEL, m.M_EMAIL, m.M_INTRODUCE, m.M_CAREER, m.M_SKILL, m.M_JOINDATE, m.M_STATUS, m.M_SNS
         from member m
-        where M_ID = #{userid} and M_PASS = #{userpwd}
+        where m.M_ID = #{userid} and m.M_PASS = #{userpwd}
         	and m.M_STATUS = 1
         	
     </select>
@@ -65,11 +65,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	 where MSEQ = #{MSEQ}
     </update>
     
-    <select id="checksocialid" parameterType="java.util.Map" resultType="com.focus.member.model.MemberDto">
-    	select M_ID, M_PASS
+    <select id="checksocialid" parameterType="java.util.Map" resultType="int">
+    	select count(M_ID)
     	  from member
     	 where M_ID = #{snsid}
     	   and M_pass = #{snspwd}
+    	   and M_STATUS = 1
+    </select>
+    
+    <insert id="registersnsMember" parameterType="com.focus.member.model.MemberDto">
+    	insert into member (M_ID, M_PASS, M_NAME, M_JOB, M_AGE, M_EMAIL, M_TEL, M_INTRODUCE, M_CAREER, M_SKILL, M_JOINDATE, M_STATUS, M_SNS)
+        values(#{M_ID}, #{M_PASS}, #{M_NAME}, #{M_JOB}, #{M_AGE},#{M_EMAIL}, #{M_TEL}, ' ', ' ', ' ',  now(), 1, 1); 
+    </insert>
+    
+    <select id="snslogin" parameterType="java.util.Map" resultType="com.focus.member.model.MemberDto">
+    select m.MSEQ, m.M_ID, m.M_NAME, m.M_PASS, m.M_JOB, m.M_AGE, m.M_TEL, m.M_EMAIL, m.M_INTRODUCE, m.M_CAREER, m.M_SKILL, m.M_JOINDATE, m.M_STATUS, m.M_SNS
+        from member m
+        where m.M_ID = #{snsid} and m.M_PASS = #{snspwd}
+        	and m.M_STATUS = 1
     </select>
     
     

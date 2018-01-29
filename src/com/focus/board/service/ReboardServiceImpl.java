@@ -48,4 +48,28 @@ public class ReboardServiceImpl implements ReboardService {
 		return reboardDao.viewArticle(seq);
 	}
 
+	@Override
+	@Transactional
+	public int commentArticle(ReboardDto reboardDto) {
+		ReboardDao reboardDao = sqlSession.getMapper(ReboardDao.class);
+		reboardDao.updateStep(reboardDto);
+		reboardDao.bcommentArticle(reboardDto);
+		reboardDao.rcommentArticle(reboardDto);
+		reboardDao.updateReply(reboardDto.getPseq());
+		return 1;
+	}
+
+	@Override
+	public int modifyArticle(ReboardDto reboardDto) {
+		ReboardDao reboardDao = sqlSession.getMapper(ReboardDao.class);		
+		return reboardDao.modifyArticle(reboardDto);
+	}
+
+	@Override
+	@Transactional
+	public void deleteArticle(int seq) {
+		ReboardDao reboardDao = sqlSession.getMapper(ReboardDao.class);
+		reboardDao.deleteBoard(seq);
+	}
+
 }

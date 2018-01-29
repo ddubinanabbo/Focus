@@ -1,7 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-
-</beans>
+<mapper namespace="com.focus.board.dao.BbsDao">
+    <select id="listArticle" parameterType="java.util.Map" resultType="com.focus.board.model.BbsDto">
+    		select b.*
+        from (
+                select (@ROWNUM := @ROWNUM + 1) rn, a.*
+                from (
+                        select  b.seq, b.name, b.id, b.email, b.subject, 
+                                b.content, b.hit, b.bcode,b.status,
+                                case 
+                                    when date_format(b.logtime, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d')
+                                    then date_format(b.logtime, '%H:%i:%s')
+                                    else date_format(b.logtime, '%Y-%m-%d')
+                                end logtime, 
+                                bbs.bseq, bbs.origin_file, bbs.save_file, bbs.filesize, bbs.savefolder
+                        from board b, bbs bbs
+                        where b.seq = bbs.seq
+                        and bcode = #{bcode} and status = 1
+        <if test="word != null and word != ''">
+            <if test="key == 'subject'">
+                and b.subject like '%'||#{word}||'%'
+            </if>
+            <if test="key != 'subject'">
+                and b.${key} = #{word}
+            </if>
+        </if>
+                        ) a
+                ,(SELECT @ROWNUM := 0) AS X limit #{end}
+                ) b
+        where b.rn &gt; #{start}
+        order by seq desc 
+    
+    </select>
+    
+     <insert id="bwriteArticle" parameterType="com.focus.board.model.BbsDto">
+        insert into board ( name, id, email, subject, content, hit, logtime, bcode, mseq, status)
+            values ( #{name}, #{id}, #{email}, #{subject}, #{content}, 0, now(), #{bcode} , #{mseq}, 1)
+    </insert>
+    <insert id="bswriteArticle" parameterType="com.focus.board.model.BbsDto">
+        insert into bbs ( seq, savefolder, origin_file, save_file, filesize)
+            values ( #{seq}, #{SAVEFOLDER}, #{ORIGIN_FILE}, #{SAVE_FILE}, #{FILESIZE})
+    </insert>
+    
+     <select id="viewArticle" parameterType="int" resultType="com.focus.board.model.BbsDto">
+        select b.seq, b.name, b.id, b.email, b.subject, 
+               b.content, b.hit, b.logtime, b.bcode,b.mseq,b.status,
+             bbs.bseq, bbs.origin_file, bbs.save_file, bbs.filesize, bbs.savefolder
+        from board b, bbs bbs
+        where b.seq = bbs.seq
+        and b.seq = #{seq}
+    </select>
+    
+    <update id="bmodifyArticle" parameterType="com.focus.board.model.BbsDto">
+        update board
+    	set subject = #{subject}, content = #{content}
+    	where seq = #{seq}
+    </update>
+    <update id="bsmodifyArticle" parameterType="com.focus.board.model.BbsDto">
+    	update bbs
+    	set savefolder = #{SAVEFOLDER}, origin_file = #{ORIGIN_FILE}, save_file = #{SAVE_FILE}, filesize = #{FILESIZE}
+    	where seq = #{seq}
+    </update>
+    
+    <delete id="deleteBoard" parameterType="int">
+    	update board
+    	set status = 0
+    	where seq = #{seq}
+    </delete>
+</mapper>

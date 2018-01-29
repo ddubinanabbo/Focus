@@ -15,6 +15,8 @@ public interface MemberDao {
 	int uploadProfile(ProfileDto profileDto);
 	ProfileDto viewProfile(int MSEQ);
 	int modifyprofile(MemberDto memberDto);
-	MemberDto checksocialid(Map<String, String> map);
+	int checksocialid(Map<String, String> map);
+	int registersnsMember(MemberDto memberDto);
+	MemberDto snslogin(Map<String, String> map);
 
 }

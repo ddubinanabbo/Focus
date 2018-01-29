@@ -20,8 +20,8 @@ $(document).ready(function(){
 			return;
 		} 
 		else {
-			document.memberform.action = "${root}/user/join.focus";
-			document.memberform.submit();
+			document.snsmemberform.action = "${root}/user/snsjoin.focus";
+			document.snsmemberform.submit();
 		}
 	})
 })
@@ -36,21 +36,21 @@ $(document).ready(function(){
                 <div class="col-lg-6">
                     <div class="login-content">
                         <div class="login-form">
-                            <form name="memberform" method="post" action="">
+                            <form name="snsmemberform" method="post" action="">
                             	<div class="row">
                             	<div class="form-group">
                                     <label>아이디</label>
-                                    <input type="text" id="M_ID" name="M_ID" class="form-control" values="${slid}" maxlength="20">
+                                    <input type="text" id="M_ID" name="M_ID" class="form-control" value="${snsUser.m_ID}" readonly="readonly">
                                 	<br>
                                 	<div id="idckresult"></div>
                                 </div>
                                 <div class="form-group pl-3">
                                     <label>패스워드</label>
-                                    <input type="password" id="M_PASS" name="M_PASS" class="form-control" ${slname} maxlength="20">
+                                    <input type="password" id="M_PASS" name="M_PASS" class="form-control" value="${snsUser.m_PASS}" readonly="readonly">
                                 </div>
                                 <div class="form-group pl-3">
                                     <label>패스워드 확인</label>
-                                    <input type="password" id="passok" name="passok" class="form-control" ${slname} maxlength="20">
+                                    <input type="password" id="passok" name="passok" class="form-control" value="${snsUser.m_PASS}" readonly="readonly">
                                 </div>
                                 </div>
                                 <div class="row">

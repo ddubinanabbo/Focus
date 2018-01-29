@@ -82,13 +82,32 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public MemberDto checksocialid(String slid, String slname) {
+	public int checksocialid(String slid, String slname) {
 		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
 
 		Map<String, String> map = new HashMap<String, String>();
 		map.put("snsid", slid);
 		map.put("snspwd", slname);
-		return memberDao.checksocialid(map);
+		int cnt = memberDao.checksocialid(map);
+		return cnt;
+	}
+
+	@Override
+	public int registersnsMember(MemberDto memberDto) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+
+		return memberDao.registersnsMember(memberDto);
+	}
+
+	@Override
+	public MemberDto snslogin(String slid, String slname) {
+		MemberDao memberDao = sqlSession.getMapper(MemberDao.class);
+
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("snsid", slid);
+		map.put("snspwd", slname);
+		System.out.println("membeDao : " + memberDao);
+		return memberDao.snslogin(map);
 	}
 
 }

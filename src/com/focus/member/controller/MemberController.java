@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.eclipse.jdt.internal.compiler.lookup.MemberTypeBinding;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -39,8 +40,8 @@ public class MemberController {
 	private String upFolder;
 
 	public MemberController() {
-		this.upFolder = "D:\\Java\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\focusGit\\profile";
-//		this.upFolder = "C:\\javadata\\workspace\\framework\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\focus\\profile";
+//		this.upFolder = "D:\\Java\\spring\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\focusGit\\profile";
+		this.upFolder = "C:\\javadata\\workspace\\framework\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\focus\\profile";
 	}
 
 	@RequestMapping("/idcheck.focus")
@@ -170,8 +171,11 @@ public class MemberController {
 		System.out.println(slname);
 		System.out.println(slid);
 		String url = request.getHeader("referer");
-		MemberDto memberDto = memberService.checksocialid(slid, slname);
-		if(memberDto != null) {
+		MemberDto memberDto = new MemberDto();
+		
+		int cnt = memberService.checksocialid(slid, slname);
+		if(cnt != 0) {
+			memberDto = memberService.snslogin(slid, slname);
 			ProfileDto profileDto = memberService.viewProfile(memberDto.getMSEQ());
 			session.setAttribute("userInfo", memberDto);
 			session.setAttribute("profileInfo", profileDto);
@@ -180,16 +184,31 @@ public class MemberController {
 			}
 			return "redirect:" + url;
 		}
-		return "redirect:/snsjoin.jsp?slid=" +slid + "&slname=" + slname;
-//		String url = request.getHeader("referer");
-//		MemberDto memberDto = memberService.login(M_ID, M_PASS);
-//		ProfileDto profileDto = memberService.viewProfile(memberDto.getMSEQ());
-//		session.setAttribute("userInfo", memberDto);
-//		session.setAttribute("profileInfo", profileDto);
-//		if (url.contains("login.jsp") || url.contains("join.jsp"))
-//			url = "/main.jsp";
-//		return "redirect:" + url;
+		memberDto.setM_ID(slid);
+		memberDto.setM_PASS(slname);
+		System.out.println(memberDto.getM_ID());
+		System.out.println(memberDto.getM_PASS());
+		request.setAttribute("snsUser",memberDto);
+		return "/snsjoin";
 
 	}
+	
+	@RequestMapping(value = "/snsjoin.focus", method = RequestMethod.POST)
+	public ModelAndView snsjoin(MemberDto memberDto, HttpSession session) {
+		ModelAndView mav = new ModelAndView();
+		int cnt = memberService.registersnsMember(memberDto);
+		String viewName = "/main";
+		if (cnt != 0) {
+			mav.addObject("registerSnsInfo", memberDto);
+			ProfileDto profileDto = memberService.viewProfile(memberDto.getMSEQ());
+			session.setAttribute("userInfo", memberDto);
+			session.setAttribute("profileInfo", profileDto);
+			viewName = "/main";
+		}
+		mav.setViewName(viewName);
+		return mav;
+	}
+	
+	
 
 }

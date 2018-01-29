@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/common/header.jsp" %>
+<%@ include file="/common/header_board.jsp" %>
+<script>
+var control = "/bbs";
+
+</script>
 
       <h3><i class="ti-announcement"></i>  자료실</h3>
       
@@ -8,7 +12,7 @@
       <table class="table table-hover ">
                   <tr>
                     <td colspan="7" align="right">
-					<a href="#" class="btn btn-info" role="button">글쓰기</a>
+					<a href="javascript:moveWrite('${bcode}');" class="btn btn-info" role="button">글쓰기</a>
 					</td>
                    </tr>
                    <tr>
@@ -18,24 +22,14 @@
                       <td align="right"><b>작성날짜</b></td>
                    </tr>
           <tbody>
-           <tr>
-                <th scope="row">1</th>
-                <td>Kolor Tea Shirt For Man</td>
-                <td align="right"><span class="badge badge-primary">Sale</span></td>
-                <td align="right">January 22</td>
+           <c:forEach var="article" items="${articlelist }">
+           <tr >
+                <th scope="row">${article.seq }</th>
+                <td><a href="javascript:viewArticle('${bcode }','${ pg }','${ key }','${ word }','${article.seq }');">${article.subject }</a></td>
+                <td align="right"><span class="badge badge-primary">${article.name }</span></td>
+                <td align="right">${article.logtime }</td>
            </tr>
-           <tr>
-                <th scope="row">2</th>
-                <td>Kolor Tea Shirt For Women</td>
-                <td align="right"><span class="badge badge-success">Tax</span></td>
-                <td align="right">January 30</td>
-           </tr>
-                <tr>
-                <th scope="row">3</th>
-                <td>Blue Backpack For Baby</td>
-                <td align="right"><span class="badge badge-danger">Extended</span></td>
-                <td align="right">January 25</td>
-      		</tr>
+           </c:forEach>
       	</tbody>
       </table>
       <hr>
