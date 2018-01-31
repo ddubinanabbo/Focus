@@ -34,7 +34,7 @@ from (select (@ROWNUM := @ROWNUM + 1) rn, b.SEQ, b.SUBJECT, b.CONTENT, case
                                     when date_format(b.logtime, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d')
                                     then date_format(b.logtime, '%H:%i:%s')
                                     else date_format(b.logtime, '%Y-%m-%d')
-                                end logtime, c.CNAME, al.SAVEFOLDER, al.SAVE_PICTURE
+                                end logtime, c.CNAME, al.SAVEFOLDER, al.SAVE_PICTURE, b.bcode
 from board b, board_list bl, category c, album al
 where b.BCODE = bl.BCODE and c.CCODE = bl.CCODE and b.SEQ = al.SEQ
 order by logtime asc ) hl,(SELECT @ROWNUM := 0) AS X limit 4

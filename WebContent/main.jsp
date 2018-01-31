@@ -6,13 +6,13 @@ var control = '';
 
 $('body').on('click', '#h', function(e){
 	//e.preventDefault();
-	alert("하하");	
+	alert("a");	
 	control = '/reboard';
 });
 
 $('body').on('click','#b', function(e){
-	e.preventDefault();
-	alert("하하");
+	//e.preventDefault();
+	alert("b");
 	control = '/album';
 });
 
@@ -37,6 +37,16 @@ $(document).ready(function(){
 				makerblist(data);
 			}
 		  });
+	  
+	  $.ajax({
+			type:'POST',
+			dataType:'json',
+			url:'${root}/boardadmin/ralist.focus',
+			success: function(data){
+				makeralist(data);
+			}
+		  });
+	
 	});
 	
 var page = 1;
@@ -71,12 +81,12 @@ function makerblist(data) {
 	var output = '';
 	var size = data.rblist.length;
 	for(var i=0; i<size; i++) {
-		alert(${data.rblist[i].Savefolder});
-		var path = "${root}/upload/${data.rblist[i].savefolder}/${data.rblist.save_picture}";		
+		
+		var path = "${root}/upload/${data.rblist[i].savefolder}/${data.rblist[i].save_picture}";		
 		output+='<div class="col-sm-3">';
 		output+='<div class="thumbnail">';
 		output+='<a id="b" href="javascript:viewArticle(\''+ data.rblist[i].bcode +'\','+page+',\'\',\'\',\''+data.rblist[i].seq +'\');">';
-		output+='<img class="img-fluid" src=\"'+ path +'\" alt="..." >';
+		output+='<img class="img-fluid" src=\"${root}/upload//'+data.rblist[i].savefolder+'//'+ data.rblist[i].save_picture+ '\">';
 		output+='</a>';
 		output+='<div class="caption">';
 		output+='<h4>'

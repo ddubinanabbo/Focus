@@ -14,6 +14,7 @@
 	<bean id="albumService" class="com.focus.board.service.AlbumServiceImpl"></bean>
 	<bean id="bbsService" class="com.focus.board.service.BbsSerivceImpl"></bean>
 	<bean id="downLoad" class="com.focus.board.service.DownloadView"/>
+	<bean id="boardService" class="com.focus.board.service.BoardServiceImpl"></bean>
 	
 
 	
@@ -49,6 +50,7 @@
 		<value>classpath:com/focus/config/mybatis/reboard.xml</value>
 		<value>classpath:com/focus/config/mybatis/album.xml</value>
 		<value>classpath:com/focus/config/mybatis/bbs.xml</value>
+		<value>classpath:com/focus/config/mybatis/board.xml</value>
 		 </list>
 		 </property>
 	</bean>

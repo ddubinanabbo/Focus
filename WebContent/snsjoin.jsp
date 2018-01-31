@@ -81,9 +81,6 @@ $(document).ready(function(){
                                 <div align="right" style="padding-bottom:5px;">                               
                                 <button type="submit" id="registerbtn" class="btn btn-primary btn-flat m-b-30 m-t-30">등록</button>
                                 </div>
-                                <div align="center" style="padding:5px;">                               
-                                <button type="button" class="btn btn-primary"><i class="ti-facebook"></i>페이스북으로 등록하기</button>
-                                </div>
                             </form>
                         </div>
                         
