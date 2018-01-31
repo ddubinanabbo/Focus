@@ -2,17 +2,20 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/common/header_board.jsp" %>
 <script>
-var control = '/reboard';
+var control = '';
 
-$('a').on('click', function(e){
-	e.preventDefault();
-	alert(e.target.id);
-	/* if(h == e.target.id) {
-		control = '/reboard';
-	}else if(b == e.target.id) {
-		control = '/album';
-	}else control = '/board'; */
+$('body').on('click', '#h', function(e){
+	//e.preventDefault();
+	alert("하하");	
+	control = '/reboard';
 });
+
+$('body').on('click','#b', function(e){
+	e.preventDefault();
+	alert("하하");
+	control = '/album';
+});
+
 
 
 $(document).ready(function(){
@@ -68,7 +71,7 @@ function makerblist(data) {
 	var output = '';
 	var size = data.rblist.length;
 	for(var i=0; i<size; i++) {
-		alert(${data.rblist[i].savefolder});
+		alert(${data.rblist[i].Savefolder});
 		var path = "${root}/upload/${data.rblist[i].savefolder}/${data.rblist.save_picture}";		
 		output+='<div class="col-sm-3">';
 		output+='<div class="thumbnail">';
@@ -77,9 +80,9 @@ function makerblist(data) {
 		output+='</a>';
 		output+='<div class="caption">';
 		output+='<h4>'
-		output+=data.rblist[i].subject;
+		output+=decodeURI(data.rblist[i].subject);
 		output+='</h4>';
-		output+='<p>'+data.rblist[i].content+'</p>';
+		output+='<p>'+decodeURI(data.rblist[i].content)+'</p>';
 		output+='<p>'+data.rblist[i].logtime+'</p>';
 		output+='</div>';
 		output+='</div>';
@@ -186,56 +189,7 @@ function makerblist(data) {
       <div class="row">
       		<div class="card">
       			<div class="card-body">
-     				 <div id="rbnotice" class="row">
-     <div class="col-sm-3">
-      <div class="thumbnail">
-       <img src="${root }/images/user-profile.jpg" alt="...">
-        <div class="caption">
-          <h4>제목과 </h4>
-          <p>내용도 넣을 수 있다.</p>          
-        </div>
-        <div align="center">
-        <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
-        </div>
-      </div>
-    </div> 
-    <div class="col-sm-3">
-      <div class="thumbnail">
-       <img src="${root }/images/user-profile.jpg" alt="...">
-        <div class="caption">
-          <h4>제목과 </h4>
-          <p>내용도 넣을 수 있다.</p>          
-        </div>
-        <div align="center">
-        <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
-        </div>
-      </div>
-    </div> 
-    <div class="col-sm-3">
-      <div class="thumbnail">
-       <img src="${root }/images/user-profile.jpg" alt="...">
-        <div class="caption">
-          <h4>제목과 </h4>
-          <p>내용도 넣을 수 있다.</p>          
-        </div>
-        <div align="center">
-        <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
-        </div>
-      </div>
-    </div> 
-    <div class="col-sm-3">
-      <div class="thumbnail">
-       <img src="${root }/images/user-profile.jpg" alt="...">
-        <div class="caption">
-          <h4>제목과 </h4>
-          <p>내용도 넣을 수 있다.</p>          
-        </div>
-        <div align="center">
-        <p><a href="#" class="btn btn-primary" role="button">Button</a></p>
-        </div>
-      </div>
-    </div>   
- </div>
+     				 <div id="rbnotice" class="row"></div>
 					</div>
 				</div>
 			</div>		

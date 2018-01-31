@@ -17,7 +17,7 @@ if(cookie != null) {
 }
 %>  
 <%@ include file="/common/header.jsp" %>
-<!-- <script type="text/javascript">
+ <script type="text/javascript">
 function statusChangeCallback(response) {
 	 
     console.log('statusChangeCallback');
@@ -67,11 +67,8 @@ function checkLoginState() {
 	    console.log('Welcome!  Fetching your information.... ');
 	    var slname = "";
 	    var slid = "";
-	    alert("1");
 	    FB.api('/me/', function(response) {
-	    	alert("2");
 	      console.log('Successful login for: ' + response.name + '' + response.id);
-	      alert("3");
 			/* slname = $("#slname").val(response.name);
 			slid = $("#slid").val(response.id);
 			alert(slname);
@@ -81,65 +78,12 @@ function checkLoginState() {
 	       innerHTML = 'Thanks for logging in, ' + response.name + '!';  */
 	    });
 	  }
- 
-  /* function getMyprofile(){
-      FB.api('/me',{fields: 'email,name'}, function(user) {
-         console.log(user);
-         console.log(user.user_about_me+" "+user.email + " " + user.name + " " + user.id + " " + user.user_birthday);
-         $("#semail").val(user.email);       
-            $("#sname").val(user.name);
-            $("#sid").val(user.id);
-            $("#sociallogin").attr("action","${root}/user/social.tfarm").submit();
-     });
-   }
-  
-   */
   
   
   FB.logout(function(response) {
 	   // Person is now logged out
 	});
-   -->
-
-/*   {
-      status: 'connected',
-      authResponse: {
-          accessToken: '...',
-          expiresIn:'...',
-          signedRequest:'...',
-          userID:'...'
-      }
-  }
   
-   */
-
-/* window.fbAsyncInit = function() {
-    FB.init({
-      appId            : 'your-app-id',
-      autoLogAppEvents : true,
-      xfbml            : true,
-      version          : 'v2.11'
-    });
-  }; */
-  
- /* FB.getLoginStatus(function(response) {
-	  if (response.status === 'connected') {
-	    console.log('Logged in.');
-	  }
-	  else {
-	    FB.login();
-	  }
-	}); */
-
-  /* (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(docum ent, 'script', 'facebook-jssdk'));*/
-
-<script type="text/javascript">
 
 $(document).ready(function(){
 	$("#loginbtn").click(function(){

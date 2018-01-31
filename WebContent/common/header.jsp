@@ -69,7 +69,7 @@
       <ul class="nav navbar-nav navbar-right">
      
 <c:if test="${userInfo == null}">
-		<li style="margin-top:7px;"><a href="${root }/user/login.focus"><span class="glyphicon glyphicon-log-in"></span>  접속</a></li>
+		<li style="margin-top:7px;"><a href="${root}/user/login.focus"><span class="glyphicon glyphicon-log-in"></span>  접속</a></li>
         <li style="margin-top:7px;"><a href="${root}/user/join.focus"><span class="glyphicon glyphicon-pencil"></span> 회원가입</a></li>
 </c:if>
 <c:if test="${userInfo != null}">

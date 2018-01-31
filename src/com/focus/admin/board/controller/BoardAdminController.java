@@ -70,6 +70,7 @@ public class BoardAdminController {
 			System.out.println(rblistDto.getSAVEFOLDER() + rblistDto.getSAVE_PICTURE());
 			rblist.put("savefolder",rblistDto.getSAVEFOLDER());
 			rblist.put("save_picture", rblistDto.getSAVE_PICTURE());
+			rblist.put("logtime", rblistDto.getLogtime());
 			rblist.put("subject", StringEncoder.urlUtf(rblistDto.getSubject()).replaceAll("\\+", "%20"));
 			rblist.put("content", StringEncoder.urlUtf(rblistDto.getContent()).replaceAll("\\+", "%20"));
 			rblist.put("cname", StringEncoder.urlUtf(rblistDto.getCname()).replaceAll("\\%2B", "+"));
