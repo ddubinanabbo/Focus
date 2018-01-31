@@ -136,34 +136,17 @@ function makerblist(data) {
 				          <tbody id="rnotice">
 				           <tr>
 				                <th scope="row">1</th>
-				                <td>Kolor Tea Shirt For Man</td>
-				                <td><span class="badge badge-primary">Sale</span></td>
-				                <td>January 22</td>
+				                <td>카페 이용사항 안내!</td>
+				                <td><span class="badge badge-primary">관리자</span></td>
+				                <td>2018-01-31</td>
 				           </tr>
 				           <tr>
 				                <th scope="row">2</th>
-				                <td>Kolor Tea Shirt For Women</td>
-				                <td><span class="badge badge-success">Tax</span></td>
-				                <td>January 30</td>
+				                <td>포커스에 오신걸 환영합니다.</td>
+				                <td><span class="badge badge-success">관리자</span></td>
+				                <td>2018-01-30</td>
 				           </tr>
-				                <tr>
-				                <th scope="row">3</th>
-				                <td>Blue Backpack For Baby</td>
-				                <td><span class="badge badge-danger">Extended</span></td>
-				                <td>January 25</td>
-				      		</tr>
-				      		<tr>
-				                <th scope="row">4</th>
-				                <td>Blue Backpack For Baby</td>
-				                <td><span class="badge badge-danger">Extended</span></td>
-				                <td>January 25</td>
-				      		</tr>
-				      		<tr>
-				                <th scope="row">5</th>
-				                <td>Blue Backpack For Baby</td>
-				                <td><span class="badge badge-danger">Extended</span></td>
-				                <td>January 25</td>
-				      		</tr>
+				        
 					      	</tbody>
 					      </table>
 					      </div>
