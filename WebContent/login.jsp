@@ -26,7 +26,12 @@ function statusChangeCallback(response) {
     
     if (response.status == 'connected') {
     	testAPI();
-    } /* else {
+    	FB.logout();
+    } else if(response.status == 'not_authorized') {
+    	FB.logout();
+    }
+    
+    /* else {
     
     	  document.getElementById('status').innerHTML = '페이스북으로 로그인을 해보세요';
       } */
@@ -41,8 +46,8 @@ function checkLoginState() {
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '1984491501767294',
-      cookie     : false,
-      xfbml      : false,
+      cookie     : true,
+      xfbml      : true,
       version    : 'v2.11'
     });
       
@@ -67,11 +72,8 @@ function checkLoginState() {
 	    console.log('Welcome!  Fetching your information.... ');
 	    var slname = "";
 	    var slid = "";
-	    alert("1");
 	    FB.api('/me/', function(response) {
-	    	alert("2");
 	      console.log('Successful login for: ' + response.name + '' + response.id);
-	      alert("3");
 			/* slname = $("#slname").val(response.name);
 			slid = $("#slid").val(response.id);
 			alert(slname);
@@ -96,9 +98,7 @@ function checkLoginState() {
    */
   
   
-  FB.logout(function(response) {
-	   // Person is now logged out
-	});
+  
   
 
 /*   {

@@ -81,7 +81,6 @@
 			<li style="margin-top:7px;"><a href="${root }/profile.jsp"><span class="glyphicon ti-user"></span>${userInfo.m_NAME}님</a></li>
 		</c:if>
         	<li style="margin-top:7px;"><a href="${root}/user/logout.focus"><span class="glyphicon glyphicon-log-out"></span> 로그아웃</a></li>
-        
 </c:if>
         
       	

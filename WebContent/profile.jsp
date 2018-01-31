@@ -81,10 +81,20 @@ $(document).ready(function(){
                         <div class="col-lg-8">
                         <form id="modifyForm" name="modifyForm" method="post" action="">
                           <div class="custom-tab user-profile-tab">
+                          
                           <div>비밀번호</div> 
-                          <div><input type="password" id="M_PASS" name="M_PASS" class="form-control" value="${userInfo.m_PASS}"></div>  
+                          <div><input type="password" id="M_PASS" name="M_PASS" class="form-control" value="${userInfo.m_PASS}"
+                          <c:if test="${userInfo.m_SNS == 1 }">
+                          readonly="readonly"
+                          </c:if> 
+                          ></div>  
                           <div>비밀번호 확인</div> 
-                          <div><input type="password" id="passok" name="passok" class="form-control" value="${userInfo.m_PASS}"></div>                     
+                          <div><input type="password" id="passok" name="passok" class="form-control" value="${userInfo.m_PASS}"
+                          <c:if test="${userInfo.m_SNS == 1 }">
+                          readonly="readonly"
+                          </c:if> 
+                          ></div>
+                                              
                                                
                           
                           <ul class="nav nav-tabs" role="tablist"></ul>

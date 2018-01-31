@@ -6,21 +6,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.focus.board.dao.BoardDao">
     
     <select id="listArticle" parameterType="java.util.Map" resultType="com.focus.board.model.BoardDto">
-    		select b.*
+   		select b.*
         from (
-                select rownum rn, a.*
+                select (@ROWNUM := @ROWNUM + 1) rn, a.*
                 from (
                         select  b.seq, b.name, b.id, b.email, b.subject, 
-                                b.content, b.hit, b.bcode,
+                                b.content, b.hit, b.bcode, b.status,
                                 case 
-                                    when to_char(b.logtime, 'yymmdd') = to_char(sysdate, 'yymmdd')
-                                    then to_char(b.logtime, 'hh24:mi:ss')
-                                    else to_char(b.logtime, 'yy.mm.dd')
-                                end logtime, 
-                                r.rseq, r.ref, r.lev, r.step, r.pseq, r.reply
-                        from board b, reboard r
-                        where b.seq = r.seq
-                        and bcode = #{bcode}
+                                    when date_format(b.logtime, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d')
+                                    then date_format(b.logtime, '%H:%i:%s')
+                                    else date_format(b.logtime, '%Y-%m-%d')
+                                end logtime
+                        from board b 
+                        where bcode = #{bcode} and status = 1
         <if test="word != null and word != ''">
             <if test="key == 'subject'">
                 and b.subject like '%'||#{word}||'%'
@@ -29,13 +27,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 and b.${key} = #{word}
             </if>
         </if>
-                        order by ref desc, step
+                        order by b.seq desc
                         ) a
-                where rownum &lt;= #{end}
+                ,(SELECT @ROWNUM := 0) AS X limit #{end}
                 ) b
         where b.rn &gt; #{start}    
     
     </select>
+    
+     <insert id="writeArticle" parameterType="com.focus.board.model.BoardDto">
+        insert into board ( name, id, email, subject, content, hit, logtime, bcode, mseq , status)
+            values ( #{name}, #{id}, #{email}, #{subject}, #{content}, 0, now(), #{bcode} , #{mseq}, 1)
+    </insert>
+    
+     <select id="viewArticle" parameterType="int" resultType="com.focus.board.model.BoardDto">
+        select b.seq, b.name, b.id, b.email, b.subject, 
+               b.content, b.hit, b.logtime, b.bcode,b.mseq
+        from board b
+        where b.seq = #{seq}
+    </select>
+    
+    <update id="modifyArticle" parameterType="com.focus.board.model.BoardDto">
+    	update board
+    	set subject = #{subject}, content = #{content}
+    	where seq = #{seq}
+    </update>
+    
+    <delete id="deleteBoard" parameterType="int">
+    	update board
+    	set status = 0
+    	where seq = #{seq}
+    </delete>
     
     
 </mapper>

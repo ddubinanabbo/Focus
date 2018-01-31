@@ -41,7 +41,7 @@
 			          <a data-toggle="collapse" href="#notice"><i class="ti-home"> 공지사항</i></a>
 			        </div>
 			         <div id="notice" class="panel-collapse collapse" style="color : #868e96;">
-			        <div class="panel-body"><a href="${root }/aboard/aboard_list.jsp"><i class="ti-announcement"> 전체 공지사항</i></a></div>
+			        <div class="panel-body"><a href="${root}/board/list.focus?bcode=1&pg=1&key=&word="><i class="ti-announcement"> 전체 공지사항</i></a></div>
 			      </div>
 		      </div>
 	      </div>
@@ -52,7 +52,7 @@
     <div class="panel panel-default" style="border-color: #343957; background-color: #343957;">
       <div class="panel-heading" style="background-color:#343957; color : #868e96;">
 		<c:set var="ccode" value="0"/>
-        <c:forEach varStatus="n" var="board" items="${boardmenu }">
+        <c:forEach varStatus="n" var="board" items="${boardmenu}">
 	        	<c:if test="${ccode ne board.ccode}">
 	        		<c:set var="ccode" value="${board.ccode }"/>
 					<div class="panel-title">
