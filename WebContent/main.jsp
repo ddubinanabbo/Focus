@@ -1,6 +1,95 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="/common/header.jsp" %>
+<%@ include file="/common/header_board.jsp" %>
+<script>
+var control = '/reboard';
+
+$('a').on('click', function(e){
+	e.preventDefault();
+	alert(e.target.id);
+	/* if(h == e.target.id) {
+		control = '/reboard';
+	}else if(b == e.target.id) {
+		control = '/album';
+	}else control = '/board'; */
+});
+
+
+$(document).ready(function(){
+	
+	
+	  $.ajax({
+		type:'POST',
+		dataType:'json',
+		url:'${root}/boardadmin/hotlist.focus',
+		success: function(data){
+			makehotlist(data);
+		}
+	  });
+	  $.ajax({
+			type:'POST',
+			dataType:'json',
+			url:'${root}/boardadmin/rblist.focus',
+			success: function(data){
+				makerblist(data);
+			}
+		  });
+	});
+	
+var page = 1;
+function makehotlist(data) {
+	var output = '';
+	var size = data.hlist.length;
+	for(var i=0; i<size; i++) {
+		output+='<tr>';
+		output+='<th>';
+		output+=data.hlist[i].seq;
+		output+='</th>';
+		output+='<td>';
+		output+='<a id="h" href="javascript:viewArticle(\''+ data.hlist[i].bcode +'\','+page+',\'\',\'\',\''+data.hlist[i].seq +'\');">';
+		//output+='<a href="javascript:controlmov(\''+ data.hlist[i].btype_name+'\');">';
+		output+=decodeURI(data.hlist[i].subject);
+		output+='</a>';
+		output+='</td>';
+		output+='<td>';
+		output+=data.hlist[i].logtime;
+		output+='</td>';
+		output+='<td>';
+		output+=decodeURI(data.hlist[i].cname);
+		output+='</td>';
+		output+='</tr>';
+	}
+	
+	$("#hnotice").append(output);
+	
+}
+
+function makerblist(data) {
+	var output = '';
+	var size = data.rblist.length;
+	for(var i=0; i<size; i++) {
+		alert(${data.rblist[i].savefolder});
+		var path = "${root}/upload/${data.rblist[i].savefolder}/${data.rblist.save_picture}";		
+		output+='<div class="col-sm-3">';
+		output+='<div class="thumbnail">';
+		output+='<a id="b" href="javascript:viewArticle(\''+ data.rblist[i].bcode +'\','+page+',\'\',\'\',\''+data.rblist[i].seq +'\');">';
+		output+='<img class="img-fluid" src=\"'+ path +'\" alt="..." >';
+		output+='</a>';
+		output+='<div class="caption">';
+		output+='<h4>'
+		output+=data.rblist[i].subject;
+		output+='</h4>';
+		output+='<p>'+data.rblist[i].content+'</p>';
+		output+='<p>'+data.rblist[i].logtime+'</p>';
+		output+='</div>';
+		output+='</div>';
+		output+='</div>';
+	}
+	$("#rbnotice").append(output);
+}
+
+
+</script>
 <style>
 .card-body{
 	margin-left:10px;
@@ -13,6 +102,7 @@
 }
 
 </style>
+
 <div class="container-fluid">
       <h4><small>안녕하세요 <i class="ti-face-smile"></i> , <span>포커스에 오신걸 환영해요~</span></small></h4>
       <hr>
@@ -30,7 +120,7 @@
 		                      <th>작성날짜</th>
 		                   </tr>
 		                </thead>
-				          <tbody>
+				          <tbody id="rnotice">
 				           <tr>
 				                <th scope="row">1</th>
 				                <td>Kolor Tea Shirt For Man</td>
@@ -72,7 +162,7 @@
 					    
 					    
   		<div class="col-sm-6">
-      <h4><i class="ti-stats-up"></i>  인기글</h4>
+      <h4><i class="ti-stats-up"></i>  지식 게시판 인기글</h4>
       <div class="row">
       		<div class="card">
       			<div class="card-body">
@@ -81,42 +171,11 @@
 		                      <tr>
 		                      <th>글번호</th>
 		                      <th>글제목</th>
-		                      <th>작성자</th>
 		                      <th>작성날짜</th>
+		                      <th>언어</th>
 		                   </tr>
 		                </thead>
-				          <tbody>
-				           <tr>
-				                <th scope="row">1</th>
-				                <td>Kolor Tea Shirt For Man</td>
-				                <td><span class="badge badge-primary">Sale</span></td>
-				                <td>January 22</td>
-				           </tr>
-				           <tr>
-				                <th scope="row">2</th>
-				                <td>Kolor Tea Shirt For Women</td>
-				                <td><span class="badge badge-success">Tax</span></td>
-				                <td>January 30</td>
-				           </tr>
-				                <tr>
-				                <th scope="row">3</th>
-				                <td>Blue Backpack For Baby</td>
-				                <td><span class="badge badge-danger">Extended</span></td>
-				                <td>January 25</td>
-				      		</tr>
-				      		<tr>
-				                <th scope="row">4</th>
-				                <td>Blue Backpack For Baby</td>
-				                <td><span class="badge badge-danger">Extended</span></td>
-				                <td>January 25</td>
-				      		</tr>
-				      		<tr>
-				                <th scope="row">5</th>
-				                <td>Blue Backpack For Baby</td>
-				                <td><span class="badge badge-danger">Extended</span></td>
-				                <td>January 25</td>
-				      		</tr>
-					      	</tbody>
+				          <tbody id="hnotice"></tbody>
 					      </table>
 					</div>
 				</div>
@@ -127,7 +186,7 @@
       <div class="row">
       		<div class="card">
       			<div class="card-body">
-     				 <div class="row">
+     				 <div id="rbnotice" class="row">
      <div class="col-sm-3">
       <div class="thumbnail">
        <img src="${root }/images/user-profile.jpg" alt="...">

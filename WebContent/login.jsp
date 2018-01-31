@@ -17,7 +17,7 @@ if(cookie != null) {
 }
 %>  
 <%@ include file="/common/header.jsp" %>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 function statusChangeCallback(response) {
 	 
     console.log('statusChangeCallback');
@@ -99,7 +99,7 @@ function checkLoginState() {
   FB.logout(function(response) {
 	   // Person is now logged out
 	});
-  
+   -->
 
 /*   {
       status: 'connected',
@@ -139,7 +139,8 @@ function checkLoginState() {
      fjs.parentNode.insertBefore(js, fjs);
    }(docum ent, 'script', 'facebook-jssdk'));*/
 
- 
+<script type="text/javascript">
+
 $(document).ready(function(){
 	$("#loginbtn").click(function(){
 		if("#M_ID" == "") {
@@ -154,8 +155,11 @@ $(document).ready(function(){
 		}
 	});
 });
+   
+   
 </script>
-                                    
+
+                                 
       <h3><i class="ti-pencil-alt2"></i>  접속</h3>      
       
       <div class="container-fluid">

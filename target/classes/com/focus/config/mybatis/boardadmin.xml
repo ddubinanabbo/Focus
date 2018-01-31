@@ -17,4 +17,27 @@ where bl.ccode = c.ccode and c.ccode != 8
 order by bl.bcode    
     </select>
     
+    <select id="hotlist" parameterType="java.util.Map" resultType="com.focus.admin.board.model.HotListDto">
+    	select *
+from (select (@ROWNUM := @ROWNUM + 1) rn, b.SEQ, b.SUBJECT, case 
+                                    when date_format(b.logtime, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d')
+                                    then date_format(b.logtime, '%H:%i:%s')
+                                    else date_format(b.logtime, '%Y-%m-%d')
+                                end logtime, c.CNAME, bt.BTYPE_NAME, b.hit, b.bcode
+from board b, board_list bl, category c, board_type bt
+where b.BCODE = bl.BCODE and c.CCODE = bl.CCODE and bt.BTYPE = bl.BTYPE and bl.BTYPE = #{btype}
+order by hit desc ) hl,(SELECT @ROWNUM := 0) AS X limit #{end}   
+    </select>
+    <select id="rblist" parameterType="java.util.Map" resultType="com.focus.admin.board.model.RecentBookListDto">
+    	select *
+from (select (@ROWNUM := @ROWNUM + 1) rn, b.SEQ, b.SUBJECT, b.CONTENT, case 
+                                    when date_format(b.logtime, '%Y-%m-%d') = date_format(now(), '%Y-%m-%d')
+                                    then date_format(b.logtime, '%H:%i:%s')
+                                    else date_format(b.logtime, '%Y-%m-%d')
+                                end logtime, c.CNAME, al.SAVEFOLDER, al.SAVE_PICTURE
+from board b, board_list bl, category c, album al
+where b.BCODE = bl.BCODE and c.CCODE = bl.CCODE and b.SEQ = al.SEQ
+order by logtime asc ) hl,(SELECT @ROWNUM := 0) AS X limit 4
+    </select>
+    
 </mapper>
